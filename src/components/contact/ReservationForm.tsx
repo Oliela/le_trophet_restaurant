@@ -266,7 +266,7 @@ export function ReservationForm({
           {(["interieur", "exterieur"] as ReservationEspace[]).map((option) => (
             <label
               key={option}
-              className={`flex-1 cursor-pointer rounded-xl border px-4 py-2.5 text-center text-sm font-semibold transition-colors ${
+              className={`flex-1 cursor-pointer rounded-xl border px-4 py-2.5 text-center text-sm font-semibold transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-terracotta ${
                 values.espace === option
                   ? "border-terracotta bg-terracotta/10 text-terracotta"
                   : "border-brun/15 text-grisbrun"

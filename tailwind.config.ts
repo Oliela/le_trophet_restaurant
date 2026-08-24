@@ -40,8 +40,10 @@ const config: Config = {
         "organic-2": "42% 58% 38% 62% / 55% 45% 55% 45%",
       },
       boxShadow: {
-        card: "0 20px 45px -20px rgba(39, 26, 20, 0.25)",
-        soft: "0 10px 30px -12px rgba(39, 26, 20, 0.18)",
+        // Ombres douces et chaudes (teintées de brun, jamais noir pur), sans
+        // effet brillant. `soft` = repos, `card` = élévation au survol/actif.
+        soft: "0 10px 24px -14px rgba(39, 26, 20, 0.16)",
+        card: "0 20px 40px -18px rgba(39, 26, 20, 0.22)",
       },
       backgroundImage: {
         bogolan: "url('/images/bogolan-texture.jpg')",

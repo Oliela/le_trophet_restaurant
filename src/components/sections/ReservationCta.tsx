@@ -8,7 +8,7 @@ export function ReservationCta() {
     <section className="relative isolate overflow-hidden py-28">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/cta-reservation.jpg"
+          src="/images/hero/cta-reservation.jpg"
           alt=""
           aria-hidden="true"
           fill

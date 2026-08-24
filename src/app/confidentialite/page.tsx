@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { SITE } from "@/lib/data";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Politique de confidentialité — Le Trophée",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Politique de confidentialité",
+  description: `Politique de confidentialité et protection des données du restaurant ${SITE.name}.`,
+  path: "/confidentialite",
+});
 
 export default function ConfidentialitePage() {
   return (

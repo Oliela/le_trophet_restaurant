@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BogolanStrip } from "@/components/ui/BogolanStrip";
+import { BogolanDivider } from "@/components/ui/BogolanDivider";
 import { Container } from "@/components/ui/Container";
 import {
   ClockIcon,
@@ -23,7 +23,7 @@ const SOCIAL_ICONS = {
 export function Footer() {
   return (
     <footer className="bg-brun text-ivoire/85">
-      <BogolanStrip />
+      <BogolanDivider variant="bande" />
       <Container className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         <div>
           <Link href="/" className="flex items-center gap-3">

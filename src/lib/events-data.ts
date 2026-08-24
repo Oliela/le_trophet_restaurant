@@ -25,7 +25,7 @@ export const UPCOMING_EVENTS: EventItem[] = [
     tarif: "Entrée libre",
     description:
       "Venez chanter vos chansons préférées et partager un moment convivial autour d'un bon repas.",
-    image: "/images/evenement-karaoke.jpg",
+    image: "/images/evenements/evenement-karaoke.jpg",
   },
   {
     id: "evt-jeux",
@@ -36,7 +36,7 @@ export const UPCOMING_EVENTS: EventItem[] = [
     tarif: "Entrée libre",
     description:
       "Profitez de nos après-midis jeux pour vous détendre entre amis ou faire de nouvelles rencontres.",
-    image: "/images/evenement-jeux.jpg",
+    image: "/images/evenements/evenement-jeux.jpg",
   },
   {
     id: "evt-match",
@@ -47,7 +47,7 @@ export const UPCOMING_EVENTS: EventItem[] = [
     tarif: "Entrée libre",
     description:
       "Vivez l'ambiance d'un grand match sur écran, autour d'un plat et d'un verre entre supporters.",
-    image: "/images/galerie/evenement-match.jpg",
+    image: "/images/evenements/evenement-match.jpg",
     places: "40 places",
   },
   {
@@ -59,7 +59,7 @@ export const UPCOMING_EVENTS: EventItem[] = [
     tarif: "5 000 F CFA / personne",
     description:
       "Une soirée à thème pour découvrir en dégustation une spécialité emblématique de la Côte d'Ivoire.",
-    image: "/images/galerie/evenement-decouverte.jpg",
+    image: "/images/evenements/evenement-decouverte.jpg",
     places: "30 places",
   },
   {
@@ -71,14 +71,14 @@ export const UPCOMING_EVENTS: EventItem[] = [
     tarif: "Sur devis",
     description:
       "Anniversaire, repas de groupe ou rencontre professionnelle : nous privatisons un espace pour votre événement.",
-    image: "/images/evenement-prive.jpg",
+    image: "/images/evenements/evenement-prive.jpg",
   },
 ];
 
 export const PAST_EVENTS_GALLERY = [
-  { src: "/images/evenement-karaoke.jpg", alt: "Précédente soirée karaoké" },
-  { src: "/images/evenement-jeux.jpg", alt: "Précédent après-midi jeux de société" },
-  { src: "/images/evenement-prive.jpg", alt: "Précédent événement privé" },
-  { src: "/images/galerie/evenement-match.jpg", alt: "Précédente diffusion d'un match" },
-  { src: "/images/galerie/evenement-decouverte.jpg", alt: "Précédente soirée découverte" },
+  { src: "/images/evenements/evenement-karaoke.jpg", alt: "Précédente soirée karaoké" },
+  { src: "/images/evenements/evenement-jeux.jpg", alt: "Précédent après-midi jeux de société" },
+  { src: "/images/evenements/evenement-prive.jpg", alt: "Précédent événement privé" },
+  { src: "/images/evenements/evenement-match.jpg", alt: "Précédente diffusion d'un match" },
+  { src: "/images/evenements/evenement-decouverte.jpg", alt: "Précédente soirée découverte" },
 ];

@@ -4,11 +4,13 @@ import { ReservationForm } from "@/components/contact/ReservationForm";
 import { WelcomeDoll } from "@/components/contact/WelcomeDoll";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { ContactCard } from "@/components/ui/ContactCard";
 import { PageIntro } from "@/components/ui/PageIntro";
 import {
   ClockIcon,
   FacebookIcon,
   InstagramIcon,
+  MailIcon,
   MapPinIcon,
   PhoneIcon,
   TikTokIcon,
@@ -17,12 +19,14 @@ import {
 import { SITE, SOCIALS } from "@/lib/data";
 import { UPCOMING_EVENTS } from "@/lib/events-data";
 import type { ReservationOccasion } from "@/lib/reservation";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact & Réservation — Le Trophée",
+export const metadata: Metadata = buildMetadata({
+  title: "Contact & Réservation",
   description:
     "Réservez votre table au restaurant ivoirien Le Trophée à Dakar : adresse, téléphone, WhatsApp, horaires et formulaire de réservation.",
-};
+  path: "/contact",
+});
 
 const SOCIAL_ICONS = {
   Facebook: FacebookIcon,
@@ -76,42 +80,39 @@ export default function ContactPage({
               <h2 className="font-display text-2xl font-semibold text-brun">
                 Nos coordonnées
               </h2>
-              <ul className="mt-6 space-y-5 text-sm text-grisbrun">
-                <li className="flex gap-3">
-                  <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
-                  {SITE.address}
-                </li>
-                <li className="flex gap-3">
-                  <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
-                  <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="hover:text-terracotta">
-                    {SITE.phone}
-                  </a>
-                </li>
-                <li className="flex gap-3">
-                  <WhatsAppIcon className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
-                  <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-terracotta">
-                    WhatsApp : {SITE.phoneDisplay}
-                  </a>
-                </li>
-                <li className="flex gap-3">
-                  <span aria-hidden="true" className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center text-terracotta">
-                    @
-                  </span>
-                  <a href={`mailto:${SITE.email}`} className="hover:text-terracotta">
-                    {SITE.email}
-                  </a>
-                </li>
-                <li className="flex gap-3">
-                  <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
-                  <span className="space-y-1">
-                    {SITE.hours.map((h) => (
-                      <span key={h.jours} className="block">
-                        {h.jours} : {h.heures}
-                      </span>
-                    ))}
-                  </span>
-                </li>
-              </ul>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <ContactCard icon={MapPinIcon} label="Adresse" value={SITE.address} />
+                <ContactCard
+                  icon={PhoneIcon}
+                  label="Téléphone"
+                  value={SITE.phone}
+                  href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+                />
+                <ContactCard
+                  icon={WhatsAppIcon}
+                  label="WhatsApp"
+                  value={SITE.phoneDisplay}
+                  href={SITE.whatsapp}
+                  external
+                />
+                <ContactCard
+                  icon={MailIcon}
+                  label="E-mail"
+                  value={SITE.email}
+                  href={`mailto:${SITE.email}`}
+                />
+              </div>
+
+              <div className="mt-4 flex gap-3 rounded-2xl border border-brun/10 bg-ivoire-card p-4 text-sm text-grisbrun shadow-soft">
+                <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
+                <span className="space-y-1">
+                  {SITE.hours.map((h) => (
+                    <span key={h.jours} className="block">
+                      {h.jours} : {h.heures}
+                    </span>
+                  ))}
+                </span>
+              </div>
 
               <div className="mt-6 flex items-center gap-3">
                 {SOCIALS.map((social) => {
@@ -144,7 +145,7 @@ export default function ContactPage({
             <WelcomeDoll />
           </div>
 
-          <div className="card-surface rounded-3xl p-6 sm:p-8">
+          <div className="card-surface rounded-[2rem] p-6 sm:p-8">
             <h2 className="font-display text-2xl font-semibold text-brun">
               Demande de réservation
             </h2>

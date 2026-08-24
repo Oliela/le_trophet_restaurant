@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { SITE } from "@/lib/data";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Mentions légales — Le Trophée",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Mentions légales",
+  description: `Informations légales du restaurant ${SITE.name} à Dakar.`,
+  path: "/mentions-legales",
+});
 
 export default function MentionsLegalesPage() {
   return (

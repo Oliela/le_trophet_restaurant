@@ -5,14 +5,14 @@ import type { EventItem } from "@/lib/events-data";
 
 export function EventCard({ event }: { event: EventItem }) {
   return (
-    <article className="card-surface flex flex-col overflow-hidden rounded-[2rem]">
-      <div className="relative aspect-[4/3] w-full">
+    <article className="card-surface group flex h-full flex-col overflow-hidden rounded-[2rem]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={event.image}
           alt={event.titre}
           fill
           sizes="(min-width: 1024px) 33vw, 90vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
         />
         <span className="absolute left-4 top-4 rounded-full bg-ocre px-3 py-1 text-xs font-bold uppercase tracking-wide text-brun">
           {event.tarif}

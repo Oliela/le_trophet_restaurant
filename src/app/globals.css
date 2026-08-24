@@ -26,6 +26,20 @@
     outline: 2px solid #a84324;
     outline-offset: 3px;
   }
+
+  /* Garde-fou global : quelle que soit l'animation (montage, filtrage,
+     apparition au scroll...), on la rend quasi instantanée pour les
+     visiteurs qui préfèrent moins de mouvement. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
@@ -42,11 +56,11 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-200 focus-visible:outline-offset-4;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-200 focus-visible:outline-offset-4 motion-safe:hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60 disabled:hover:translate-y-0;
   }
 
   .btn-primary {
-    @apply btn bg-terracotta text-ivoire shadow-soft hover:bg-terracotta-dark active:scale-[0.98];
+    @apply btn bg-terracotta text-ivoire shadow-soft hover:bg-terracotta-dark hover:shadow-card;
   }
 
   .btn-outline {
@@ -58,7 +72,7 @@
   }
 
   .card-surface {
-    @apply bg-ivoire-card border border-brun/5 shadow-card;
+    @apply bg-ivoire-card border border-brun/5 shadow-soft transition-shadow duration-300 hover:shadow-card;
   }
 }
 

@@ -5,7 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { ReservationCta } from "@/components/sections/ReservationCta";
 import { SpacesServices } from "@/components/sections/SpacesServices";
 import { WhyUs } from "@/components/sections/WhyUs";
-import { BogolanStrip } from "@/components/ui/BogolanStrip";
+import { BogolanDivider } from "@/components/ui/BogolanDivider";
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
       <Hero />
       <BestSellers />
       <div className="flex justify-center">
-        <BogolanStrip className="max-w-content" />
+        <BogolanDivider variant="bande" className="max-w-content" />
       </div>
       <SpacesServices />
       <About />

@@ -3,13 +3,14 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ClockIcon, MapPinIcon } from "@/components/icons/Icons";
 import { SITE } from "@/lib/data";
+import { formatPrice } from "@/lib/format";
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-brun pb-20 pt-32 sm:pt-40 lg:pb-28 lg:pt-44">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero-plat-ivoirien.jpg"
+          src="/images/hero/hero-plat-ivoirien.jpg"
           alt="Grand plat traditionnel ivoirien servi au restaurant Le Trophée"
           fill
           priority
@@ -32,7 +33,8 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ivoire/80 md:text-lg">
             Découvrez l’authenticité de la cuisine ivoirienne dans une ambiance
-            chaleureuse et conviviale, avec des plats à partir de 2 500 F CFA.
+            chaleureuse et conviviale, avec des plats à partir de{" "}
+            {formatPrice(SITE.startingPrice)}.
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">

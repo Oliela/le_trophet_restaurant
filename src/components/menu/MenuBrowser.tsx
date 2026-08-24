@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { CategorySection } from "@/components/menu/CategorySection";
 import { MenuDollBreak } from "@/components/menu/MenuDollBreak";
 import type { MenuCategorySlug, MenuItem } from "@/lib/menu-data";
@@ -17,7 +17,7 @@ export function MenuBrowser({
   items: MenuItem[];
 }) {
   const [activeSlug, setActiveSlug] = useState<MenuCategorySlug>(categories[0]?.slug);
-  const tabRefs = useRef<Partial<Record<MenuCategorySlug, HTMLButtonElement>>>({});
+  const tabRefs = useRef<Partial<Record<MenuCategorySlug, HTMLAnchorElement>>>({});
 
   useEffect(() => {
     const sections = categories
@@ -51,7 +51,8 @@ export function MenuBrowser({
     });
   }, [activeSlug]);
 
-  const handleSelect = (slug: MenuCategorySlug) => {
+  const handleSelect = (event: MouseEvent, slug: MenuCategorySlug) => {
+    event.preventDefault();
     setActiveSlug(slug);
     document.getElementById(slug)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -62,29 +63,30 @@ export function MenuBrowser({
         aria-label="Catégories de la carte"
         className="sticky top-20 z-30 -mx-6 border-b border-brun/10 bg-ivoire/95 px-6 backdrop-blur-sm sm:-mx-8 sm:px-8 lg:-mx-10 lg:px-10"
       >
-        <div className="no-scrollbar mx-auto flex max-w-content gap-2 overflow-x-auto py-4">
+        <ul className="no-scrollbar mx-auto flex max-w-content list-none gap-2 overflow-x-auto py-4">
           {categories.map((category) => {
             const isActive = category.slug === activeSlug;
             return (
-              <button
-                key={category.slug}
-                ref={(el) => {
-                  if (el) tabRefs.current[category.slug] = el;
-                }}
-                type="button"
-                onClick={() => handleSelect(category.slug)}
-                aria-current={isActive ? "true" : undefined}
-                className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-                  isActive
-                    ? "border-terracotta bg-terracotta text-ivoire"
-                    : "border-brun/15 text-grisbrun hover:border-terracotta hover:text-terracotta"
-                }`}
-              >
-                {category.label}
-              </button>
+              <li key={category.slug} className="shrink-0">
+                <a
+                  ref={(el) => {
+                    if (el) tabRefs.current[category.slug] = el;
+                  }}
+                  href={`#${category.slug}`}
+                  onClick={(event) => handleSelect(event, category.slug)}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`block whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                    isActive
+                      ? "border-terracotta bg-terracotta text-ivoire"
+                      : "border-brun/15 text-grisbrun hover:border-terracotta hover:text-terracotta"
+                  }`}
+                >
+                  {category.label}
+                </a>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </nav>
 
       <div>

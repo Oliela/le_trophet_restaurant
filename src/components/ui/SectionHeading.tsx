@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/ui/Reveal";
+
 type Align = "left" | "center";
 
 export function SectionHeading({
@@ -14,7 +16,7 @@ export function SectionHeading({
   light?: boolean;
 }) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : ""}>
+    <Reveal className={align === "center" ? "mx-auto max-w-2xl text-center" : ""}>
       <span className={`eyebrow ${light ? "text-ocre-light" : ""}`}>{eyebrow}</span>
       <h2 className={`section-title ${light ? "text-ivoire" : ""}`}>{title}</h2>
       {text ? (
@@ -26,6 +28,6 @@ export function SectionHeading({
           {text}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   );
 }

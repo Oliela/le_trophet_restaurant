@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SITE } from "@/lib/data";
+import { buildMetadata, buildRestaurantJsonLd } from "@/lib/seo";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -20,10 +21,21 @@ const sans = DM_Sans({
   display: "swap",
 });
 
+const homeTitle = `${SITE.name} — Restaurant ivoirien à Dakar`;
+const homeMetadata = buildMetadata({
+  title: "Restaurant ivoirien à Dakar",
+  description: SITE.description,
+  path: "/",
+});
+
 export const metadata: Metadata = {
-  title: `${SITE.name} — Restaurant ivoirien à Dakar`,
-  description:
-    "Le Trophée, restaurant ivoirien à Dakar : cuisine authentique, ambiance chaleureuse, plats à partir de 2 500 F CFA. Sur place, à emporter, livraison, karaoké et jeux de société.",
+  metadataBase: new URL(SITE.siteUrl),
+  ...homeMetadata,
+  // Cas particulier de l'accueil : le nom du restaurant passe en tête
+  // (au lieu du format "Page — Le Trophée" utilisé sur les autres pages).
+  title: homeTitle,
+  openGraph: { ...homeMetadata.openGraph, title: homeTitle },
+  twitter: { ...homeMetadata.twitter, title: homeTitle },
   keywords: [
     "restaurant ivoirien Dakar",
     "cuisine ivoirienne Sénégal",
@@ -31,14 +43,9 @@ export const metadata: Metadata = {
     "attiéké Dakar",
     "restaurant africain Dakar",
   ],
-  openGraph: {
-    title: `${SITE.name} — Restaurant ivoirien à Dakar`,
-    description:
-      "Cuisine ivoirienne authentique, ambiance chaleureuse et conviviale. Plats à partir de 2 500 F CFA.",
-    locale: "fr_SN",
-    type: "website",
-  },
 };
+
+const restaurantJsonLd = buildRestaurantJsonLd();
 
 export default function RootLayout({
   children,
@@ -48,6 +55,11 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${display.variable} ${sans.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd) }}
+        />
         <a
           href="#contenu-principal"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-terracotta focus:px-5 focus:py-3 focus:text-ivoire"

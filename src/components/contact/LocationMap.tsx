@@ -1,11 +1,9 @@
 import { Button } from "@/components/ui/Button";
 import { MapPinIcon } from "@/components/icons/Icons";
-import { SITE } from "@/lib/data";
+import { SITE, getDirectionsUrl } from "@/lib/data";
 
 export function LocationMap() {
-  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-    SITE.address
-  )}`;
+  const directionsUrl = getDirectionsUrl();
 
   return (
     <div className="overflow-hidden rounded-[2rem] border border-brun/10 shadow-card">

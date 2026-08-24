@@ -36,7 +36,7 @@ export const GALLERY_FILTERS: { value: "tout" | GalleryCategory; label: string }
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g-plat-garba",
-    src: "/images/plat-garba.jpg",
+    src: "/images/plats/plat-garba.jpg",
     alt: "Garba, thon frit et attiéké",
     caption: "Garba, l'incontournable du Trophée",
     category: "plats",
@@ -45,7 +45,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-kedjenou",
-    src: "/images/plat-kedjenou.jpg",
+    src: "/images/plats/plat-kedjenou.jpg",
     alt: "Kédjénou de poulet",
     caption: "Kédjénou de poulet mijoté",
     category: "plats",
@@ -54,7 +54,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-poisson",
-    src: "/images/plat-poisson-braise.jpg",
+    src: "/images/plats/plat-poisson-braise.jpg",
     alt: "Poisson braisé et attiéké",
     caption: "Poisson braisé, sauce piquante maison",
     category: "plats",
@@ -63,7 +63,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-alloco",
-    src: "/images/menu/alloco-nature.jpg",
+    src: "/images/plats/alloco-nature.jpg",
     alt: "Alloco doré",
     caption: "Alloco doré à souhait",
     category: "plats",
@@ -72,7 +72,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-sauce-graine",
-    src: "/images/menu/sauce-graine.jpg",
+    src: "/images/plats/sauce-graine.jpg",
     alt: "Sauce graine traditionnelle",
     caption: "Sauce graine, recette traditionnelle",
     category: "plats",
@@ -81,7 +81,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-beignets",
-    src: "/images/menu/beignets-sucres.jpg",
+    src: "/images/plats/beignets-sucres.jpg",
     alt: "Beignets sucrés maison",
     caption: "Beignets sucrés faits maison",
     category: "plats",
@@ -90,7 +90,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-interieur",
-    src: "/images/espace-interieur.jpg",
+    src: "/images/espaces/espace-interieur.jpg",
     alt: "Salle intérieure du restaurant",
     caption: "Notre salle intérieure",
     category: "espaces",
@@ -99,7 +99,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-exterieur",
-    src: "/images/espace-exterieur.jpg",
+    src: "/images/espaces/espace-exterieur.jpg",
     alt: "Terrasse extérieure du restaurant",
     caption: "Notre terrasse extérieure",
     category: "espaces",
@@ -108,7 +108,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-bar",
-    src: "/images/galerie/espace-bar.jpg",
+    src: "/images/espaces/espace-bar.jpg",
     alt: "Bar du restaurant",
     caption: "Notre bar",
     category: "espaces",
@@ -117,7 +117,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-terrasse-soir",
-    src: "/images/galerie/espace-terrasse-soir.jpg",
+    src: "/images/espaces/espace-terrasse-soir.jpg",
     alt: "Terrasse du restaurant en soirée",
     caption: "La terrasse en soirée",
     category: "espaces",
@@ -126,7 +126,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-boisson-tipunch",
-    src: "/images/menu/ti-punch-ivoirien.jpg",
+    src: "/images/boissons/ti-punch-ivoirien.jpg",
     alt: "Ti'Punch ivoirien",
     caption: "Ti'Punch ivoirien",
     category: "boissons",
@@ -135,7 +135,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-boisson-bissap",
-    src: "/images/menu/bissap-glace.jpg",
+    src: "/images/boissons/bissap-glace.jpg",
     alt: "Bissap glacé",
     caption: "Bissap glacé maison",
     category: "boissons",
@@ -144,7 +144,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-boisson-cafe",
-    src: "/images/menu/cafe-ivoirien.jpg",
+    src: "/images/boissons/cafe-ivoirien.jpg",
     alt: "Café ivoirien",
     caption: "Café ivoirien",
     category: "boissons",
@@ -153,7 +153,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-evenement-karaoke",
-    src: "/images/evenement-karaoke.jpg",
+    src: "/images/evenements/evenement-karaoke.jpg",
     alt: "Soirée karaoké au restaurant",
     caption: "Soirée karaoké",
     category: "evenements",
@@ -162,7 +162,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-evenement-jeux",
-    src: "/images/evenement-jeux.jpg",
+    src: "/images/evenements/evenement-jeux.jpg",
     alt: "Après-midi jeux de société",
     caption: "Après-midi jeux de société",
     category: "evenements",
@@ -171,7 +171,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-evenement-match",
-    src: "/images/galerie/evenement-match.jpg",
+    src: "/images/evenements/evenement-match.jpg",
     alt: "Diffusion d'un match au restaurant",
     caption: "Diffusion d'un match",
     category: "evenements",
@@ -180,7 +180,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-evenement-prive",
-    src: "/images/evenement-prive.jpg",
+    src: "/images/evenements/evenement-prive.jpg",
     alt: "Événement privé au restaurant",
     caption: "Anniversaire et événement privé",
     category: "evenements",
@@ -228,7 +228,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-decoration-table",
-    src: "/images/galerie/decoration-table.jpg",
+    src: "/images/decoration/decoration-table.jpg",
     alt: "Détail décoratif d'une table",
     caption: "Détail d'une table",
     category: "decoration",
@@ -237,7 +237,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-equipe-salle",
-    src: "/images/galerie/equipe-1.jpg",
+    src: "/images/equipe/equipe-1.jpg",
     alt: "L'équipe en salle",
     caption: "L'équipe en salle",
     category: "equipe",
@@ -246,7 +246,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-equipe-cuisine",
-    src: "/images/galerie/equipe-2.jpg",
+    src: "/images/equipe/equipe-2.jpg",
     alt: "L'équipe en cuisine",
     caption: "L'équipe en cuisine",
     category: "equipe",
@@ -255,7 +255,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-equipe-accueil",
-    src: "/images/galerie/equipe-3.jpg",
+    src: "/images/equipe/equipe-3.jpg",
     alt: "L'équipe à l'accueil",
     caption: "L'accueil du restaurant",
     category: "equipe",

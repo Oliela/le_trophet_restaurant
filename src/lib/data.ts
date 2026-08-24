@@ -1,29 +1,12 @@
 import { UPCOMING_EVENTS } from "@/lib/events-data";
 import { formatPrice } from "@/lib/format";
 import { getMenuItemsByCategory } from "@/lib/menu-data";
+import { SITE, SOCIALS, NAV_LINKS, getDirectionsUrl, getMapEmbedUrl } from "@/lib/site.config";
 
-export const SITE = {
-  name: "Le Trophée",
-  tagline: "Les saveurs de la Côte d’Ivoire au cœur de Dakar.",
-  phone: "+221 77 000 00 00",
-  phoneDisplay: "77 000 00 00",
-  whatsapp: "https://wa.me/221770000000",
-  email: "contact@le-trophee-dakar.sn",
-  address: "Rue 12, Angle Corniche Ouest, Dakar, Sénégal",
-  addressShort: "Corniche Ouest, Dakar",
-  hours: [
-    { jours: "Lundi — Vendredi", heures: "11h00 – 23h00" },
-    { jours: "Samedi — Dimanche", heures: "11h00 – 00h00" },
-  ],
-};
-
-export const NAV_LINKS = [
-  { href: "/", label: "Accueil" },
-  { href: "/menu", label: "À la carte" },
-  { href: "/galerie", label: "Galerie" },
-  { href: "/evenements", label: "Événements" },
-  { href: "/contact", label: "Contact" },
-];
+// Le fichier de configuration central du restaurant a été déplacé dans
+// src/lib/site.config.ts (coordonnées, horaires, réseaux sociaux, prix de
+// départ...). Il est réexporté ici pour ne pas casser les imports existants.
+export { SITE, SOCIALS, NAV_LINKS, getDirectionsUrl, getMapEmbedUrl };
 
 export type Dish = {
   slug: string;
@@ -84,8 +67,7 @@ export const VALUES = [
   },
   {
     title: "Des plats généreux",
-    description:
-      "Des portions gourmandes accessibles à partir de 2 500 F CFA.",
+    description: `Des portions gourmandes accessibles à partir de ${formatPrice(SITE.startingPrice)}.`,
     icon: "plate",
   },
   {
@@ -99,13 +81,6 @@ export const VALUES = [
     icon: "star",
   },
 ] as const;
-
-export const SOCIALS = [
-  { label: "Facebook", href: "https://facebook.com/letrophee.dakar" },
-  { label: "Instagram", href: "https://instagram.com/letrophee.dakar" },
-  { label: "TikTok", href: "https://tiktok.com/@letrophee.dakar" },
-  { label: "WhatsApp", href: SITE.whatsapp },
-];
 
 export const SPECIALITES_FOOTER = [
   "Garba",

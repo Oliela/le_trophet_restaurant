@@ -25,10 +25,15 @@ from generate_placeholders import (
 )
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "public", "images")
-MENU_OUT = os.path.join(OUT, "menu")
-GAL_OUT = os.path.join(OUT, "galerie")
-os.makedirs(MENU_OUT, exist_ok=True)
-os.makedirs(GAL_OUT, exist_ok=True)
+PLATS_OUT = os.path.join(OUT, "plats")
+BOISSONS_OUT = os.path.join(OUT, "boissons")
+ESPACES_OUT = os.path.join(OUT, "espaces")
+EVENEMENTS_OUT = os.path.join(OUT, "evenements")
+DECORATION_OUT = os.path.join(OUT, "decoration")
+EQUIPE_OUT = os.path.join(OUT, "equipe")
+HERO_OUT = os.path.join(OUT, "hero")
+for _d in (PLATS_OUT, BOISSONS_OUT, ESPACES_OUT, EVENEMENTS_OUT, DECORATION_OUT, EQUIPE_OUT, HERO_OUT):
+    os.makedirs(_d, exist_ok=True)
 
 random.seed(7)
 
@@ -247,26 +252,26 @@ def avatar_bust(path, size, skin, shirt, name, role):
 
 
 if __name__ == "__main__":
-    menu_banner(os.path.join(GAL_OUT, "..", "menu-banniere.jpg"))
+    menu_banner(os.path.join(HERO_OUT, "menu-banniere.jpg"))
 
     for slug, name, cat in MENU_DISHES:
         accent = CATEGORY_ACCENT.get(cat, OCRE)
         plate_photo(
-            os.path.join(MENU_OUT, f"{slug}.jpg"), (1000, 900),
+            os.path.join(PLATS_OUT, f"{slug}.jpg"), (1000, 900),
             (92, 55, 34), (28, 18, 13), name, "Photo temporaire à remplacer", accent=accent,
         )
 
     for slug, name, liquid, accent in DRINKS:
-        drink_photo(os.path.join(MENU_OUT, f"{slug}.jpg"), (900, 1100), liquid, accent, name)
+        drink_photo(os.path.join(BOISSONS_OUT, f"{slug}.jpg"), (900, 1100), liquid, accent, name)
 
-    scene_extra(os.path.join(GAL_OUT, "espace-bar.jpg"), (1000, 1250), (70, 46, 30), (24, 16, 12), "bar", "Notre bar")
-    scene_extra(os.path.join(GAL_OUT, "espace-terrasse-soir.jpg"), (1200, 900), (30, 25, 45), (10, 8, 14), "terrasse_soir", "Terrasse en soirée")
-    scene_extra(os.path.join(GAL_OUT, "evenement-match.jpg"), (1200, 900), (35, 45, 35), (14, 16, 12), "match", "Diffusion d'un match")
-    scene_extra(os.path.join(GAL_OUT, "evenement-decouverte.jpg"), (1200, 900), (85, 50, 30), (26, 17, 12), "decouverte", "Soirée découverte")
-    scene_extra(os.path.join(GAL_OUT, "decoration-table.jpg"), (1000, 1000), (60, 40, 26), (60, 40, 26), "table_detail", "Détail d'une table")
+    scene_extra(os.path.join(ESPACES_OUT, "espace-bar.jpg"), (1000, 1250), (70, 46, 30), (24, 16, 12), "bar", "Notre bar")
+    scene_extra(os.path.join(ESPACES_OUT, "espace-terrasse-soir.jpg"), (1200, 900), (30, 25, 45), (10, 8, 14), "terrasse_soir", "Terrasse en soirée")
+    scene_extra(os.path.join(EVENEMENTS_OUT, "evenement-match.jpg"), (1200, 900), (35, 45, 35), (14, 16, 12), "match", "Diffusion d'un match")
+    scene_extra(os.path.join(EVENEMENTS_OUT, "evenement-decouverte.jpg"), (1200, 900), (85, 50, 30), (26, 17, 12), "decouverte", "Soirée découverte")
+    scene_extra(os.path.join(DECORATION_OUT, "decoration-table.jpg"), (1000, 1000), (60, 40, 26), (60, 40, 26), "table_detail", "Détail d'une table")
 
-    avatar_bust(os.path.join(GAL_OUT, "equipe-1.jpg"), (900, 1100), (94, 58, 38), TERRACOTTA, "L'équipe en salle", "Photo à venir")
-    avatar_bust(os.path.join(GAL_OUT, "equipe-2.jpg"), (900, 1100), (110, 68, 44), OLIVE, "L'équipe en cuisine", "Photo à venir")
-    avatar_bust(os.path.join(GAL_OUT, "equipe-3.jpg"), (900, 1100), (80, 50, 32), OCRE, "L'accueil", "Photo à venir")
+    avatar_bust(os.path.join(EQUIPE_OUT, "equipe-1.jpg"), (900, 1100), (94, 58, 38), TERRACOTTA, "L'équipe en salle", "Photo à venir")
+    avatar_bust(os.path.join(EQUIPE_OUT, "equipe-2.jpg"), (900, 1100), (110, 68, 44), OLIVE, "L'équipe en cuisine", "Photo à venir")
+    avatar_bust(os.path.join(EQUIPE_OUT, "equipe-3.jpg"), (900, 1100), (80, 50, 32), OCRE, "L'accueil", "Photo à venir")
 
-    print("Images menu/galerie générées dans", MENU_OUT, "et", GAL_OUT)
+    print("Images menu/galerie générées dans", PLATS_OUT, BOISSONS_OUT, ESPACES_OUT, EVENEMENTS_OUT, DECORATION_OUT, EQUIPE_OUT)

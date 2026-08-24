@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { GalleryFilters } from "@/components/gallery/GalleryFilters";
 import { Lightbox } from "@/components/gallery/Lightbox";
 import { MasonryGrid } from "@/components/gallery/MasonryGrid";
@@ -14,6 +14,18 @@ export function GalleryExplorer({ items }: { items: GalleryItem[] }) {
     () => (filter === "tout" ? items : items.filter((item) => item.category === filter)),
     [items, filter]
   );
+
+  // Références stables : évitent de relancer l'effet du Lightbox (et donc de
+  // lui faire voler le focus) à chaque clic sur précédent/suivant.
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const showPrev = useCallback(() => {
+    setLightboxIndex((current) =>
+      current === null ? null : (current - 1 + filtered.length) % filtered.length
+    );
+  }, [filtered.length]);
+  const showNext = useCallback(() => {
+    setLightboxIndex((current) => (current === null ? null : (current + 1) % filtered.length));
+  }, [filtered.length]);
 
   return (
     <div>
@@ -40,15 +52,9 @@ export function GalleryExplorer({ items }: { items: GalleryItem[] }) {
         <Lightbox
           items={filtered}
           index={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
-          onPrev={() =>
-            setLightboxIndex((current) =>
-              current === null ? null : (current - 1 + filtered.length) % filtered.length
-            )
-          }
-          onNext={() =>
-            setLightboxIndex((current) => (current === null ? null : (current + 1) % filtered.length))
-          }
+          onClose={closeLightbox}
+          onPrev={showPrev}
+          onNext={showNext}
         />
       ) : null}
     </div>

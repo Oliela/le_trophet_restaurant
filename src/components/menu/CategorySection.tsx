@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { BogolanDivider } from "@/components/ui/BogolanDivider";
 import { MenuBadgeList } from "@/components/ui/MenuBadgeList";
+import { MenuRowDivider } from "@/components/ui/MenuRowDivider";
 import { PriceTag } from "@/components/ui/PriceTag";
+import { Reveal } from "@/components/ui/Reveal";
 import type { MenuCategorySlug, MenuItem } from "@/lib/menu-data";
 
 export function CategorySection({
@@ -27,33 +29,36 @@ export function CategorySection({
       aria-labelledby={`${slug}-heading`}
       className="scroll-mt-[168px] border-t border-brun/10 py-16 first:border-t-0 sm:py-20"
     >
-      <div className="flex items-baseline gap-4">
+      <div className="flex items-center gap-4">
         <span className="font-display text-3xl text-terracotta/50">
           {String(index + 1).padStart(2, "0")}
         </span>
         <h2 id={`${slug}-heading`} className="font-display text-3xl font-semibold text-brun sm:text-4xl">
           {label}
         </h2>
+        <BogolanDivider variant="carre" className="hidden sm:block" />
       </div>
 
       {/* Plat mis en avant */}
-      <div
-        className={`mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 ${
-          imageOnRight ? "" : ""
-        }`}
-      >
+      <Reveal className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className={`relative mx-auto w-full max-w-md ${imageOnRight ? "lg:order-2" : ""}`}>
           <div
             aria-hidden="true"
             className="absolute -inset-4 -z-10 rounded-organic bg-ocre/15"
           />
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-organic shadow-card">
+          {index % 2 === 0 ? (
+            <BogolanDivider
+              variant="angle"
+              className={`absolute -z-10 ${imageOnRight ? "-right-5 -top-5" : "-left-5 -top-5"}`}
+            />
+          ) : null}
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-organic shadow-card">
             <Image
               src={featured.image}
               alt={`${featured.nom} — ${label.toLowerCase()} du restaurant Le Trophée`}
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
             />
           </div>
           <PriceTag
@@ -71,7 +76,7 @@ export function CategorySection({
           </p>
           <MenuBadgeList badges={featured.badges} className="mt-5" />
         </div>
-      </div>
+      </Reveal>
 
       {/* Autres plats de la catégorie */}
       {rest.length > 0 ? (
@@ -104,7 +109,7 @@ export function CategorySection({
                 </div>
                 <PriceTag amount={item.prix} size="sm" className="ml-auto" />
               </div>
-              <BogolanDivider />
+              <MenuRowDivider />
             </li>
           ))}
         </ul>

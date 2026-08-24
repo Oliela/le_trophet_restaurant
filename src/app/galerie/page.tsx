@@ -3,12 +3,14 @@ import { GalleryExplorer } from "@/components/gallery/GalleryExplorer";
 import { Container } from "@/components/ui/Container";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { GALLERY_ITEMS } from "@/lib/gallery-data";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Galerie — Le Trophée",
+export const metadata: Metadata = buildMetadata({
+  title: "Galerie",
   description:
     "Découvrez en images les plats, les espaces, la décoration et l’ambiance du restaurant ivoirien Le Trophée à Dakar.",
-};
+  path: "/galerie",
+});
 
 export default function GaleriePage() {
   return (

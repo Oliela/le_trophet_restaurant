@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { ImageWithPattern } from "@/components/ui/ImageWithPattern";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function About() {
@@ -29,24 +29,18 @@ export function About() {
           </Button>
         </div>
 
-        <div className="relative order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none">
-          <div
-            aria-hidden="true"
-            className="absolute -left-6 -top-6 h-[85%] w-[85%] rounded-[3rem] bg-terracotta/90 sm:-left-10 sm:-top-10"
+        <div className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none">
+          <ImageWithPattern
+            src="/images/decoration/about-poupee.jpg"
+            alt="Poupée africaine faisant partie du décor du restaurant Le Trophée, symbole de l’identité ivoirienne du lieu"
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            aspect="aspect-[3/4]"
+            shape="rounded"
+            backdrop="terracotta"
+            backdropClassName="-left-6 -top-6 h-[85%] w-[85%] sm:-left-10 sm:-top-10"
+            bogolanCorner
+            bogolanCornerClassName="-bottom-6 -right-6 sm:-bottom-8 sm:-right-8"
           />
-          <div
-            aria-hidden="true"
-            className="bogolan-bg absolute -bottom-6 -right-6 h-24 w-24 rounded-2xl shadow-soft sm:-bottom-8 sm:-right-8 sm:h-32 sm:w-32"
-          />
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2.5rem] shadow-card">
-            <Image
-              src="/images/about-poupee.jpg"
-              alt="Poupée africaine faisant partie du décor du restaurant Le Trophée, symbole de l’identité ivoirienne du lieu"
-              fill
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              className="object-cover"
-            />
-          </div>
         </div>
       </Container>
     </section>

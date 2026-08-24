@@ -365,41 +365,49 @@ def og_image(path, size=(1200, 630)):
     img.save(path, quality=90)
 
 
+HERO_OUT = os.path.join(OUT, "hero")
+PLATS_OUT = os.path.join(OUT, "plats")
+ESPACES_OUT = os.path.join(OUT, "espaces")
+EVENEMENTS_OUT = os.path.join(OUT, "evenements")
+DECORATION_OUT = os.path.join(OUT, "decoration")
+for _d in (HERO_OUT, PLATS_OUT, ESPACES_OUT, EVENEMENTS_OUT, DECORATION_OUT):
+    os.makedirs(_d, exist_ok=True)
+
 if __name__ == "__main__":
     bogolan_texture(os.path.join(OUT, "bogolan-texture.jpg"))
-    hero_image(os.path.join(OUT, "hero-plat-ivoirien.jpg"))
-    cta_background(os.path.join(OUT, "cta-reservation.jpg"))
-    about_portrait(os.path.join(OUT, "about-poupee.jpg"))
+    hero_image(os.path.join(HERO_OUT, "hero-plat-ivoirien.jpg"))
+    cta_background(os.path.join(HERO_OUT, "cta-reservation.jpg"))
+    about_portrait(os.path.join(DECORATION_OUT, "about-poupee.jpg"))
     og_image(os.path.join(OUT, "og-image.jpg"))
     logo(os.path.join(OUT, "logo.png"))
 
     plate_photo(
-        os.path.join(OUT, "plat-garba.jpg"), (1200, 1400),
+        os.path.join(PLATS_OUT, "plat-garba.jpg"), (1200, 1400),
         (90, 55, 34), (30, 19, 14), "Garba", "Photo temporaire à remplacer", accent=OCRE,
     )
     plate_photo(
-        os.path.join(OUT, "plat-kedjenou.jpg"), (1200, 1000),
+        os.path.join(PLATS_OUT, "plat-kedjenou.jpg"), (1200, 1000),
         (95, 50, 30), (32, 20, 15), "Kédjénou de poulet", "Photo temporaire à remplacer", accent=TERRACOTTA,
     )
     plate_photo(
-        os.path.join(OUT, "plat-poisson-braise.jpg"), (1200, 1000),
+        os.path.join(PLATS_OUT, "plat-poisson-braise.jpg"), (1200, 1000),
         (88, 52, 32), (28, 18, 13), "Poisson braisé", "Photo temporaire à remplacer", accent=OLIVE,
     )
 
-    scene_photo(os.path.join(OUT, "espace-interieur.jpg"), (1200, 900), (70, 46, 30), (28, 18, 14), "interieur").save(
-        os.path.join(OUT, "espace-interieur.jpg"), quality=88
+    scene_photo(os.path.join(ESPACES_OUT, "espace-interieur.jpg"), (1200, 900), (70, 46, 30), (28, 18, 14), "interieur").save(
+        os.path.join(ESPACES_OUT, "espace-interieur.jpg"), quality=88
     )
-    scene_photo(os.path.join(OUT, "espace-exterieur.jpg"), (1200, 900), (140, 110, 60), (70, 60, 35), "exterieur").save(
-        os.path.join(OUT, "espace-exterieur.jpg"), quality=88
+    scene_photo(os.path.join(ESPACES_OUT, "espace-exterieur.jpg"), (1200, 900), (140, 110, 60), (70, 60, 35), "exterieur").save(
+        os.path.join(ESPACES_OUT, "espace-exterieur.jpg"), quality=88
     )
-    scene_photo(os.path.join(OUT, "evenement-karaoke.jpg"), (1200, 900), (60, 30, 40), (20, 12, 15), "karaoke").save(
-        os.path.join(OUT, "evenement-karaoke.jpg"), quality=88
+    scene_photo(os.path.join(EVENEMENTS_OUT, "evenement-karaoke.jpg"), (1200, 900), (60, 30, 40), (20, 12, 15), "karaoke").save(
+        os.path.join(EVENEMENTS_OUT, "evenement-karaoke.jpg"), quality=88
     )
-    scene_photo(os.path.join(OUT, "evenement-jeux.jpg"), (1200, 900), (70, 55, 30), (25, 18, 12), "jeux").save(
-        os.path.join(OUT, "evenement-jeux.jpg"), quality=88
+    scene_photo(os.path.join(EVENEMENTS_OUT, "evenement-jeux.jpg"), (1200, 900), (70, 55, 30), (25, 18, 12), "jeux").save(
+        os.path.join(EVENEMENTS_OUT, "evenement-jeux.jpg"), quality=88
     )
-    scene_photo(os.path.join(OUT, "evenement-prive.jpg"), (1200, 900), (75, 45, 30), (28, 17, 13), "prive").save(
-        os.path.join(OUT, "evenement-prive.jpg"), quality=88
+    scene_photo(os.path.join(EVENEMENTS_OUT, "evenement-prive.jpg"), (1200, 900), (75, 45, 30), (28, 17, 13), "prive").save(
+        os.path.join(EVENEMENTS_OUT, "evenement-prive.jpg"), quality=88
     )
 
     poupee_png(

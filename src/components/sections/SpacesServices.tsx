@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BagIcon, BikeIcon, UsersIcon, UtensilsIcon } from "@/components/icons/Icons";
 import { SERVICES } from "@/lib/data";
@@ -9,14 +10,14 @@ const SPACES = [
     title: "Notre espace intérieur",
     description:
       "Un cadre chaleureux et confortable pour vos repas en famille, entre amis ou entre collègues.",
-    image: "/images/espace-interieur.jpg",
+    image: "/images/espaces/espace-interieur.jpg",
     alt: "Salle intérieure chaleureuse du restaurant Le Trophée à Dakar",
   },
   {
     title: "Notre espace extérieur",
     description:
       "Un espace ouvert et convivial pour profiter de votre repas dans une ambiance détendue.",
-    image: "/images/espace-exterieur.jpg",
+    image: "/images/espaces/espace-exterieur.jpg",
     alt: "Terrasse extérieure conviviale du restaurant Le Trophée à Dakar",
   },
 ];
@@ -38,30 +39,29 @@ export function SpacesServices() {
         />
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {SPACES.map((space) => (
-            <div
-              key={space.title}
-              className="group relative overflow-hidden rounded-[2rem] shadow-card"
-            >
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src={space.image}
-                  alt={space.alt}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brun/85 via-brun/20 to-transparent" />
+          {SPACES.map((space, index) => (
+            <Reveal key={space.title} delay={index * 100}>
+              <div className="group relative overflow-hidden rounded-[2rem] shadow-card">
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={space.image}
+                    alt={space.alt}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brun/85 via-brun/20 to-transparent" />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 p-7">
+                  <h3 className="font-display text-2xl font-semibold text-ivoire">
+                    {space.title}
+                  </h3>
+                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-ivoire/85">
+                    {space.description}
+                  </p>
+                </div>
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-7">
-                <h3 className="font-display text-2xl font-semibold text-ivoire">
-                  {space.title}
-                </h3>
-                <p className="mt-2 max-w-sm text-sm leading-relaxed text-ivoire/85">
-                  {space.description}
-                </p>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -85,7 +85,7 @@ export function SpacesServices() {
         <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl">
             <Image
-              src="/images/espace-interieur.jpg"
+              src="/images/espaces/espace-interieur.jpg"
               alt="Détail de la salle intérieure du restaurant"
               fill
               sizes="25vw"
@@ -94,7 +94,7 @@ export function SpacesServices() {
           </div>
           <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl">
             <Image
-              src="/images/espace-exterieur.jpg"
+              src="/images/espaces/espace-exterieur.jpg"
               alt="Détail de la terrasse extérieure du restaurant"
               fill
               sizes="25vw"
@@ -111,12 +111,16 @@ export function SpacesServices() {
             />
           </div>
           <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl bg-brun">
+            <div
+              aria-hidden="true"
+              className="absolute inset-6 -z-0 rounded-full bg-ocre/20"
+            />
             <Image
               src="/images/poupee-africaine-2.png"
               alt="Poupée africaine faisant partie de la décoration du restaurant"
               fill
               sizes="25vw"
-              className="object-contain p-4"
+              className="relative object-contain p-4 drop-shadow-md"
             />
           </div>
         </div>
