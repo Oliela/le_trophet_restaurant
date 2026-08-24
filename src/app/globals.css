@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivoire text-brun font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-terracotta/20 text-brun;
+  }
+
+  :focus-visible {
+    outline: 2px solid #a84324;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-terracotta;
+  }
+
+  .section-title {
+    @apply mt-3 text-3xl leading-tight text-brun sm:text-4xl md:text-5xl;
+  }
+
+  .section-text {
+    @apply mt-5 max-w-2xl text-base leading-relaxed text-grisbrun md:text-lg;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-200 focus-visible:outline-offset-4;
+  }
+
+  .btn-primary {
+    @apply btn bg-terracotta text-ivoire shadow-soft hover:bg-terracotta-dark active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply btn border border-brun/20 bg-transparent text-brun hover:border-terracotta hover:text-terracotta;
+  }
+
+  .btn-light {
+    @apply btn border border-ivoire/40 bg-transparent text-ivoire hover:bg-ivoire hover:text-brun;
+  }
+
+  .card-surface {
+    @apply bg-ivoire-card border border-brun/5 shadow-card;
+  }
+}
+
+@layer utilities {
+  .bogolan-bg {
+    background-image: url("/images/bogolan-texture.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bogolan-veil {
+    position: relative;
+  }
+
+  .bogolan-veil::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 249, 240, 0.82);
+  }
+}

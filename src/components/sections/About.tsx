@@ -1,0 +1,54 @@
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+export function About() {
+  return (
+    <section className="overflow-hidden py-24 sm:py-28">
+      <Container className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+        <div className="order-2 lg:order-1">
+          <SectionHeading
+            eyebrow="Notre histoire"
+            title="Un coin de Côte d’Ivoire à Dakar"
+          />
+          <p className="section-text">
+            Notre restaurant vous invite à découvrir une cuisine ivoirienne
+            authentique, généreuse et pleine de caractère. À travers nos
+            plats, notre décoration et notre accueil, nous avons souhaité
+            créer à Dakar un véritable espace de partage inspiré de la Côte
+            d’Ivoire.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-grisbrun md:text-lg">
+            Que vous connaissiez déjà ces saveurs ou que vous les découvriez
+            pour la première fois, notre équipe vous accueille dans une
+            ambiance conviviale, comme à la maison.
+          </p>
+          <Button href="/contact" variant="outline" className="mt-9">
+            Découvrir le restaurant
+          </Button>
+        </div>
+
+        <div className="relative order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none">
+          <div
+            aria-hidden="true"
+            className="absolute -left-6 -top-6 h-[85%] w-[85%] rounded-[3rem] bg-terracotta/90 sm:-left-10 sm:-top-10"
+          />
+          <div
+            aria-hidden="true"
+            className="bogolan-bg absolute -bottom-6 -right-6 h-24 w-24 rounded-2xl shadow-soft sm:-bottom-8 sm:-right-8 sm:h-32 sm:w-32"
+          />
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2.5rem] shadow-card">
+            <Image
+              src="/images/about-poupee.jpg"
+              alt="Poupée africaine faisant partie du décor du restaurant Le Trophée, symbole de l’identité ivoirienne du lieu"
+              fill
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
