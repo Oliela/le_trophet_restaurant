@@ -39,7 +39,7 @@ export function Hero() {
             <Button href="/contact" variant="primary">
               Réserver une table
             </Button>
-            <Button href="/carte" variant="light">
+            <Button href="/menu" variant="light">
               Découvrir la carte
             </Button>
           </div>

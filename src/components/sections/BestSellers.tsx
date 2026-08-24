@@ -58,7 +58,7 @@ export function BestSellers() {
         </div>
 
         <div className="mt-16 flex justify-center">
-          <Button href="/carte" variant="outline">
+          <Button href="/menu" variant="outline">
             Découvrir toute la carte
           </Button>
         </div>

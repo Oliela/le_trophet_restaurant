@@ -1,3 +1,7 @@
+import { UPCOMING_EVENTS } from "@/lib/events-data";
+import { formatPrice } from "@/lib/format";
+import { getMenuItemsByCategory } from "@/lib/menu-data";
+
 export const SITE = {
   name: "Le Trophée",
   tagline: "Les saveurs de la Côte d’Ivoire au cœur de Dakar.",
@@ -15,7 +19,7 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { href: "/", label: "Accueil" },
-  { href: "/carte", label: "À la carte" },
+  { href: "/menu", label: "À la carte" },
   { href: "/galerie", label: "Galerie" },
   { href: "/evenements", label: "Événements" },
   { href: "/contact", label: "Contact" },
@@ -30,35 +34,15 @@ export type Dish = {
   image: string;
 };
 
-export const BEST_SELLERS: Dish[] = [
-  {
-    slug: "garba",
-    name: "Garba",
-    description:
-      "Thon frit et attiéké parfumé, servi avec notre sauce tomate maison et légumes frais.",
-    price: "2 500 F CFA",
-    tag: "Spécialité de la maison",
-    image: "/images/plat-garba.jpg",
-  },
-  {
-    slug: "kedjenou-poulet",
-    name: "Kédjénou de poulet",
-    description:
-      "Poulet mijoté lentement à l’étouffée avec légumes et épices, selon la tradition ivoirienne.",
-    price: "4 500 F CFA",
-    tag: "Très apprécié",
-    image: "/images/plat-kedjenou.jpg",
-  },
-  {
-    slug: "poisson-braise",
-    name: "Poisson braisé",
-    description:
-      "Poisson braisé à la braise, accompagné d’attiéké et d’une sauce piquante maison.",
-    price: "5 000 F CFA",
-    tag: "Très apprécié",
-    image: "/images/plat-poisson-braise.jpg",
-  },
-];
+// Dérivé de la carte officielle (src/lib/menu-data.ts) pour éviter toute divergence de contenu.
+export const BEST_SELLERS: Dish[] = getMenuItemsByCategory("incontournables").map((item) => ({
+  slug: item.slug,
+  name: item.nom,
+  description: item.description,
+  price: formatPrice(item.prix),
+  tag: item.recommandation ? "Spécialité de la maison" : "Très apprécié",
+  image: item.image,
+}));
 
 export const SERVICES = [
   { label: "Sur place", icon: "utensils" },
@@ -74,29 +58,23 @@ export type EventCard = {
   image: string;
 };
 
-export const EVENTS: EventCard[] = [
-  {
-    slug: "karaoke",
-    title: "Soirées karaoké",
-    description:
-      "Venez chanter vos chansons préférées et partager un moment convivial autour d’un bon repas.",
-    image: "/images/evenement-karaoke.jpg",
-  },
-  {
-    slug: "jeux-de-societe",
-    title: "Jeux de société",
-    description:
-      "Profitez de nos journées et soirées jeux pour vous détendre entre amis ou faire de nouvelles rencontres.",
-    image: "/images/evenement-jeux.jpg",
-  },
-  {
-    slug: "evenements-prives",
-    title: "Événements privés",
-    description:
-      "Anniversaire, repas de groupe ou rencontre professionnelle : contactez-nous pour organiser votre événement.",
-    image: "/images/evenement-prive.jpg",
-  },
+// Sélection de 3 rendez-vous mis en avant sur l'accueil, dérivée de src/lib/events-data.ts
+// (la liste complète, avec dates et tarifs, est présentée sur la page /evenements).
+const HOMEPAGE_EVENT_SLUGS = [
+  "soiree-karaoke",
+  "apres-midi-jeux-de-societe",
+  "anniversaire-evenement-prive",
 ];
+
+export const EVENTS: EventCard[] = HOMEPAGE_EVENT_SLUGS.map((slug) => {
+  const event = UPCOMING_EVENTS.find((item) => item.slug === slug)!;
+  return {
+    slug: event.slug,
+    title: event.titre,
+    description: event.description,
+    image: event.image,
+  };
+});
 
 export const VALUES = [
   {
