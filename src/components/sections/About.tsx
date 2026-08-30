@@ -31,7 +31,7 @@ export function About() {
 
         <div className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none">
           <ImageWithPattern
-            src="/images/decoration/about-poupee.jpg"
+            src="/images/decoration/Design sans titre (4).png"
             alt="Poupée africaine faisant partie du décor du restaurant Le Trophée, symbole de l’identité ivoirienne du lieu"
             sizes="(min-width: 1024px) 40vw, 90vw"
             aspect="aspect-[3/4]"

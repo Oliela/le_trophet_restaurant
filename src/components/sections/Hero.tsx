@@ -10,14 +10,14 @@ export function Hero() {
     <section className="relative isolate overflow-hidden bg-brun pb-20 pt-32 sm:pt-40 lg:pb-28 lg:pt-44">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero/hero-plat-ivoirien.jpg"
+          src="/images/hero/vis_1205202413255097.jpg"
           alt="Grand plat traditionnel ivoirien servi au restaurant Le Trophée"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brun via-brun/60 to-brun/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brun via-brun/60 to-brun/[83%]" />
       </div>
 
       <div
@@ -53,7 +53,7 @@ export function Hero() {
             </span>
             <span className="flex items-center gap-2">
               <ClockIcon className="h-4 w-4 text-ocre-light" />
-              Ouvert tous les jours, 11h00 – 23h00
+              Ouvert du Dimanche au Jeudi, 9h00 – 00h00 et du Vendredi au Samedi, 9h00 – 01h00
             </span>
           </div>
         </div>

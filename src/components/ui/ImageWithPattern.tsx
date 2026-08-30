@@ -68,9 +68,7 @@ export function ImageWithPattern({
         <BogolanDivider variant="angle" className={`absolute -z-10 ${bogolanCornerClassName}`} />
       ) : null}
       <div
-        className={`relative w-full overflow-hidden ${aspect} ${SHAPE_CLASS[shape]} ${
-          shadow ? "shadow-card" : ""
-        }`}
+        className={`relative w-full overflow-hidden ${aspect} ${SHAPE_CLASS[shape]} `}
       >
         <Image
           src={src}

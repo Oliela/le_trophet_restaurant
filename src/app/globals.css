@@ -78,7 +78,7 @@
 
 @layer utilities {
   .bogolan-bg {
-    background-image: url("/images/bogolan-texture.jpg");
+    background-image: url("/images/bogolan-texture.jpeg");
     background-size: cover;
     background-position: center;
   }

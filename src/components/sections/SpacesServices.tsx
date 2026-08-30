@@ -10,14 +10,14 @@ const SPACES = [
     title: "Notre espace intérieur",
     description:
       "Un cadre chaleureux et confortable pour vos repas en famille, entre amis ou entre collègues.",
-    image: "/images/espaces/espace-interieur.jpg",
+    image: "/images/espaces/IMG_2527.JPG",
     alt: "Salle intérieure chaleureuse du restaurant Le Trophée à Dakar",
   },
   {
     title: "Notre espace extérieur",
     description:
       "Un espace ouvert et convivial pour profiter de votre repas dans une ambiance détendue.",
-    image: "/images/espaces/espace-exterieur.jpg",
+    image: "/images/espaces/IMG_2528.JPG",
     alt: "Terrasse extérieure conviviale du restaurant Le Trophée à Dakar",
   },
 ];
@@ -85,7 +85,7 @@ export function SpacesServices() {
         <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl">
             <Image
-              src="/images/espaces/espace-interieur.jpg"
+              src="/images/bogolan/2.jpg"
               alt="Détail de la salle intérieure du restaurant"
               fill
               sizes="25vw"
@@ -94,7 +94,7 @@ export function SpacesServices() {
           </div>
           <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl">
             <Image
-              src="/images/espaces/espace-exterieur.jpg"
+              src="/images/bogolan/3.jpg"
               alt="Détail de la terrasse extérieure du restaurant"
               fill
               sizes="25vw"
@@ -103,24 +103,20 @@ export function SpacesServices() {
           </div>
           <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl">
             <Image
-              src="/images/bogolan-texture.jpg"
+              src="/images/bogolan/4.jpg"
               alt="Détail du tissu bogolan authentique présent dans le restaurant"
               fill
               sizes="25vw"
               className="object-cover"
             />
           </div>
-          <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl bg-brun">
-            <div
-              aria-hidden="true"
-              className="absolute inset-6 -z-0 rounded-full bg-ocre/20"
-            />
+          <div className="relative col-span-1 aspect-square overflow-hidden rounded-2xl">
             <Image
-              src="/images/poupee-africaine-2.png"
-              alt="Poupée africaine faisant partie de la décoration du restaurant"
+              src="/images/bogolan/5.jpg"
+              alt="Détail du tissu bogolan authentique présent dans le restaurant"
               fill
               sizes="25vw"
-              className="relative object-contain p-4 drop-shadow-md"
+              className="object-cover"
             />
           </div>
         </div>

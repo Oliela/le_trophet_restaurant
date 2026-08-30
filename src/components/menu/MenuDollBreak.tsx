@@ -11,7 +11,7 @@ export function MenuDollBreak() {
             className="absolute inset-x-2 bottom-2 top-6 -z-10 rounded-full bg-terracotta/25"
           />
           <Image
-            src="/images/poupee-africaine-1.png"
+            src="/images/poupee-africaine-3.png"
             alt="Poupée africaine faisant partie de la décoration du restaurant Le Trophée"
             fill
             sizes="140px"
