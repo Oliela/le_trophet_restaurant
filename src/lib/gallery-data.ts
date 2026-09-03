@@ -36,7 +36,7 @@ export const GALLERY_FILTERS: { value: "tout" | GalleryCategory; label: string }
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g-plat-garba",
-    src: "/images/plats/plat-garba.jpg",
+    src: "/images/plats/garba.jpeg",
     alt: "Garba, thon frit et attiéké",
     caption: "Garba, l'incontournable du Trophée",
     category: "plats",
@@ -45,7 +45,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-kedjenou",
-    src: "/images/plats/plat-kedjenou.jpg",
+    src: "/images/plats/kedjenou de poulet.avif",
     alt: "Kédjénou de poulet",
     caption: "Kédjénou de poulet mijoté",
     category: "plats",
@@ -54,7 +54,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-poisson",
-    src: "/images/plats/plat-poisson-braise.jpg",
+    src: "/images/plats/pechedujour1.jpg",
     alt: "Poisson braisé et attiéké",
     caption: "Poisson braisé, sauce piquante maison",
     category: "plats",
@@ -63,7 +63,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-alloco",
-    src: "/images/plats/alloco-nature.jpg",
+    src: "/images/plats/alloco-x.jpg",
     alt: "Alloco doré",
     caption: "Alloco doré à souhait",
     category: "plats",
@@ -72,7 +72,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-sauce-graine",
-    src: "/images/plats/sauce-graine.jpg",
+    src: "/images/plats/La-sauce-graine-ivoirienne.jpg",
     alt: "Sauce graine traditionnelle",
     caption: "Sauce graine, recette traditionnelle",
     category: "plats",
@@ -81,16 +81,17 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-plat-beignets",
-    src: "/images/plats/beignets-sucres.jpg",
-    alt: "Beignets sucrés maison",
+    src: "/images/plats/neems2.jpeg",
+    alt: "Neems",
     caption: "Beignets sucrés faits maison",
     category: "plats",
     width: 1000,
     height: 900,
   },
+  //espaces
   {
     id: "g-espace-interieur",
-    src: "/images/espaces/espace-interieur.jpg",
+    src: "/images/espaces/espace4.jpeg",
     alt: "Salle intérieure du restaurant",
     caption: "Notre salle intérieure",
     category: "espaces",
@@ -99,7 +100,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-exterieur",
-    src: "/images/espaces/espace-exterieur.jpg",
+    src: "/images/espaces/espace1.jpeg",
     alt: "Terrasse extérieure du restaurant",
     caption: "Notre terrasse extérieure",
     category: "espaces",
@@ -108,7 +109,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-bar",
-    src: "/images/espaces/espace-bar.jpg",
+    src: "/images/espaces/bar1.jpeg",
     alt: "Bar du restaurant",
     caption: "Notre bar",
     category: "espaces",
@@ -117,25 +118,26 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-espace-terrasse-soir",
-    src: "/images/espaces/espace-terrasse-soir.jpg",
+    src: "/images/espaces/espace2.jpeg",
     alt: "Terrasse du restaurant en soirée",
     caption: "La terrasse en soirée",
     category: "espaces",
     width: 1200,
     height: 900,
   },
+  //boisson
   {
     id: "g-boisson-tipunch",
-    src: "/images/boissons/ti-punch-ivoirien.jpg",
-    alt: "Ti'Punch ivoirien",
-    caption: "Ti'Punch ivoirien",
+    src: "/images/boissons/mon soleil.jpeg",
+    alt: "MOn Soleil, cocktail ivoirien",
+    caption: "Mon Soleil",
     category: "boissons",
     width: 900,
     height: 1100,
   },
   {
     id: "g-boisson-bissap",
-    src: "/images/boissons/bissap-glace.jpg",
+    src: "/images/boissons/bissap.jpeg",
     alt: "Bissap glacé",
     caption: "Bissap glacé maison",
     category: "boissons",
@@ -144,16 +146,17 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-boisson-cafe",
-    src: "/images/boissons/cafe-ivoirien.jpg",
-    alt: "Café ivoirien",
-    caption: "Café ivoirien",
+    src: "/images/boissons/shotbaddies.jpeg",
+    alt: "Shot Baddies",
+    caption: "Shot Baddies",
     category: "boissons",
     width: 900,
     height: 1100,
   },
+  //evenements
   {
     id: "g-evenement-karaoke",
-    src: "/images/evenements/evenement-karaoke.jpg",
+    src: "/images/evenements/karaoke.png",
     alt: "Soirée karaoké au restaurant",
     caption: "Soirée karaoké",
     category: "evenements",
@@ -162,9 +165,9 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g-evenement-jeux",
-    src: "/images/evenements/evenement-jeux.jpg",
-    alt: "Après-midi jeux de société",
-    caption: "Après-midi jeux de société",
+    src: "/images/evenements/secrethitler.jpg",
+    alt: "SOiree jeux de société",
+    caption: "Secret Hitler, soirée jeux de société",
     category: "evenements",
     width: 1200,
     height: 900,
@@ -187,6 +190,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     width: 1200,
     height: 900,
   },
+  //decorations
   {
     id: "g-decoration-bogolan-1",
     src: "/images/bogolan/bogolan-1.jpg",
@@ -271,6 +275,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     width: 1000,
     height: 1000,
   },
+  // equipes
   {
     id: "g-equipe-salle",
     src: "/images/equipe/equipe-1.jpg",

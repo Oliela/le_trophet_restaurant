@@ -20,12 +20,9 @@ export function PriceTag({
     <span
       className={`inline-flex shrink-0 flex-col items-center justify-center rounded-full bg-ocre text-center font-bold leading-tight text-brun shadow-soft ${sizeClass} ${className}`}
     >
-      {formatPrice(amount)
-        .replace(" F CFA", "")
-        .split(" ")
-        .map((part, i) => (
-          <span key={i}>{part}</span>
-        ))}
+      <span className="whitespace-nowrap">
+        {formatPrice(amount).replace(" F CFA", "")}
+      </span>
       <span className="text-[0.6em] font-semibold uppercase tracking-wide">F CFA</span>
     </span>
   );

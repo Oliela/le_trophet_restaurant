@@ -6,6 +6,13 @@ import { PriceTag } from "@/components/ui/PriceTag";
 import { Reveal } from "@/components/ui/Reveal";
 import type { MenuCategorySlug, MenuItem } from "@/lib/menu-data";
 
+const ALCOHOL_GROUP_IMAGES: Record<string, string> = {
+  Bières: "/images/boissons/categories/bieres.jpg",
+  Vins: "/images/boissons/categories/vins.jpg",
+  Liqueurs: "/images/boissons/categories/liqueurs.jpg",
+  Shots: "/images/boissons/categories/shots.jpg",
+};
+
 export function CategorySection({
   slug,
   label,
@@ -81,18 +88,47 @@ export function CategorySection({
       {/* Autres plats de la catégorie */}
       {rest.length > 0 ? (
         <ul className="mt-14 divide-y divide-transparent">
-          {rest.map((item) => (
+          {rest.map((item, itemIndex) => (
             <li key={item.id}>
+              {item.groupe && (itemIndex === 0 || rest[itemIndex - 1]?.groupe !== item.groupe) ? (
+                slug === "boissons-alcoolisees" && ALCOHOL_GROUP_IMAGES[item.groupe] ? (
+                  <div className="relative mb-5 mt-10 aspect-[16/7] overflow-hidden rounded-3xl shadow-card first:mt-0">
+                    <Image
+                      src={ALCOHOL_GROUP_IMAGES[item.groupe]}
+                      alt={`Sélection ${item.groupe.toLowerCase()} du restaurant Le Trophée`}
+                      fill
+                      sizes="(min-width: 1024px) 70vw, 100vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brun/90 via-brun/25 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                      <span className="eyebrow text-ocre-light">Notre sélection</span>
+                      <h3 className="mt-1 font-display text-3xl font-semibold text-ivoire sm:text-4xl">
+                        {item.groupe}
+                      </h3>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-2 mt-8 flex items-center gap-3 first:mt-0">
+                    <span className="h-px w-8 bg-terracotta/40" aria-hidden="true" />
+                    <h3 className="font-display text-xl font-semibold text-terracotta">
+                      {item.groupe}
+                    </h3>
+                  </div>
+                )
+              ) : null}
               <div className="flex items-center gap-5 py-5">
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full sm:h-20 sm:w-20">
-                  <Image
-                    src={item.image}
-                    alt={item.nom}
-                    fill
-                    sizes="80px"
-                    className="object-cover"
-                  />
-                </div>
+                {slug !== "boissons-alcoolisees" && slug !== "boissons-chaudes" ? (
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full sm:h-20 sm:w-20">
+                    <Image
+                      src={item.image}
+                      alt={item.nom}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : null}
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <h4 className="font-display text-xl font-semibold text-brun">{item.nom}</h4>
@@ -107,7 +143,7 @@ export function CategorySection({
                   </p>
                   <MenuBadgeList badges={item.badges} className="mt-2" />
                 </div>
-                <PriceTag amount={item.prix} size="sm" className="ml-auto" />
+                <PriceTag amount={item.prix} size="md" className="ml-auto" />
               </div>
               <MenuRowDivider />
             </li>

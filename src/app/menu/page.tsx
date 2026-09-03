@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "La carte du restaurant ivoirien Le Trophée à Dakar : entrées, sauces, grillades, incontournables, desserts et boissons, à partir de 2 500 F CFA.",
   path: "/menu",
-  image: "/images/hero/menu-banniere.jpg",
+  image: "/images/hero/hero.png",
 });
 
 export default function MenuPage() {
@@ -22,7 +22,7 @@ export default function MenuPage() {
       <section className="relative isolate overflow-hidden bg-brun pb-16 pt-32 sm:pt-40">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/hero/menu-banniere.jpg"
+            src="/images/hero/hero.png"
             alt="Plusieurs plats ivoiriens dressés sur une table au restaurant Le Trophée"
             fill
             priority
