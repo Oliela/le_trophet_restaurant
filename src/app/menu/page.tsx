@@ -60,12 +60,12 @@ export default function MenuPage() {
           <MenuBrowser categories={MENU_CATEGORIES} items={MENU_ITEMS} />
         </Container>
 
-        <Container className="mt-4">
+        {/* <Container className="mt-4">
           <p className="text-xs leading-relaxed text-grisbrun/70">
             Les plats, descriptions et prix présentés sur cette page sont temporaires
             et seront remplacés par la carte officielle du restaurant.
           </p>
-        </Container>
+        </Container> */}
       </section>
     </>
   );
