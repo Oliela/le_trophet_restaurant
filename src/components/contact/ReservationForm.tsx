@@ -303,7 +303,7 @@ export function ReservationForm({
       </fieldset>
 
       <label className="block text-sm font-medium text-brun">
-        Occasion
+        Occasion puis je vais effacer 
         <select
           value={values.occasion}
           onChange={(e) => update("occasion", e.target.value as ReservationOccasion)}
