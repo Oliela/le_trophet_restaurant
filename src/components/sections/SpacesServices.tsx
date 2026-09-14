@@ -10,15 +10,15 @@ const SPACES = [
     title: "Notre espace intérieur",
     description:
       "Un cadre chaleureux et confortable pour vos repas en famille, entre amis ou entre collègues.",
-    image: "/images/espaces/IMG_2527.JPG",
+    image: "/images/espaces/espace4.jpeg",
     alt: "Salle intérieure chaleureuse du restaurant Le Trophée à Dakar",
   },
   {
-    title: "Notre espace extérieur",
+    title: "Notre Bar",
     description:
-      "Un espace ouvert et convivial pour profiter de votre repas dans une ambiance détendue.",
-    image: "/images/espaces/IMG_2528.JPG",
-    alt: "Terrasse extérieure conviviale du restaurant Le Trophée à Dakar",
+      "Un espace convivial pour déguster nos cocktails et boissons dans une ambiance détendue.",
+    image: "/images/espaces/bar1.jpeg",
+    alt: "Bar du restaurant Le Trophée à Dakar",
   },
 ];
 

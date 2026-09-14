@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { EventCard } from "@/components/events/EventCard";
+import { PublicEventCard } from "@/components/events/PublicEventCard";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { Reveal } from "@/components/ui/Reveal";
-import { PAST_EVENTS_GALLERY, UPCOMING_EVENTS } from "@/lib/events-data";
+import { PAST_EVENTS_GALLERY } from "@/lib/events-data";
+import { prisma } from "@/lib/prisma";
 import { buildMetadata } from "@/lib/seo";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
   title: "Événements",
@@ -15,7 +18,32 @@ export const metadata: Metadata = buildMetadata({
   path: "/evenements",
 });
 
-export default function EvenementsPage() {
+export default async function EvenementsPage() {
+  const now = new Date();
+
+  const events = await prisma.event.findMany({
+    where: {
+      published: true,
+      OR: [
+        {
+          scheduleType: "WEEKLY",
+          OR: [
+            { recurrenceEndsAt: null },
+            { recurrenceEndsAt: { gte: now } },
+          ],
+        },
+        {
+          scheduleType: { in: ["ONE_DAY", "DATE_RANGE"] },
+          OR: [
+            { endsAt: { gte: now } },
+            { endsAt: null, startsAt: { gte: now } },
+          ],
+        },
+      ],
+    },
+    orderBy: { startsAt: "asc" },
+  });
+
   return (
     <>
       <PageIntro
@@ -29,13 +57,19 @@ export default function EvenementsPage() {
           <Reveal>
             <h2 className="section-title">Prochains événements</h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {UPCOMING_EVENTS.map((event, index) => (
-              <Reveal key={event.id} delay={(index % 3) * 100}>
-                <EventCard event={event} />
-              </Reveal>
-            ))}
-          </div>
+          {events.length === 0 ? (
+            <div className="mt-10 rounded-2xl border border-dashed border-brun/20 p-10 text-center text-grisbrun">
+              Aucun événement n’est programmé pour le moment.
+            </div>
+          ) : (
+            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {events.map((event, index) => (
+                <Reveal key={event.id} delay={(index % 3) * 100}>
+                  <PublicEventCard event={event} />
+                </Reveal>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 
@@ -57,7 +91,7 @@ export default function EvenementsPage() {
           </Reveal>
           <Reveal delay={120} className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
             <Image
-              src="/images/evenements/evenement-prive.jpg"
+              src="/images/evenements/evenement-jeux.jpeg"
               alt="Événement privé organisé au restaurant Le Trophée"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"

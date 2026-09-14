@@ -58,12 +58,16 @@ function buildPrefill(searchParams: { evenement?: string; occasion?: string }): 
   return {};
 }
 
-export default function ContactPage({
+export default async function ContactPage({
   searchParams,
 }: {
-  searchParams: { evenement?: string; occasion?: string };
+  searchParams: Promise<{
+    evenement?: string;
+    occasion?: string;
+  }>;
 }) {
-  const prefill = buildPrefill(searchParams);
+  const resolvedSearchParams = await searchParams;
+  const prefill = buildPrefill(resolvedSearchParams);
 
   return (
     <>

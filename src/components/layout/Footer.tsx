@@ -11,12 +11,18 @@ import {
   TikTokIcon,
   WhatsAppIcon,
 } from "@/components/icons/Icons";
-import { NAV_LINKS, SITE, SOCIALS, SPECIALITES_FOOTER } from "@/lib/data";
+import {
+  getMapEmbedUrl,
+  NAV_LINKS,
+  SITE,
+  SOCIALS,
+  SPECIALITES_FOOTER,
+} from "@/lib/data";
 
 const SOCIAL_ICONS = {
   Facebook: FacebookIcon,
   Instagram: InstagramIcon,
-  TikTok: TikTokIcon,
+  // TikTok: TikTokIcon,
   WhatsApp: WhatsAppIcon,
 };
 
@@ -28,14 +34,14 @@ export function Footer() {
         <div>
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/logo.png"
+              src="/images/logo_light.png"
               alt="Le Trophée"
-              width={40}
-              height={40}
-              className="h-10 w-10"
+              width={90}
+              height={90}
+              // className="h-10 w-10"
             />
             <span className="font-display text-xl font-semibold text-ivoire">
-              {SITE.name}
+              {/* {SITE.name} */}
             </span>
           </Link>
           <p className="mt-4 max-w-xs font-display text-lg italic text-ocre-light">
@@ -107,19 +113,15 @@ export function Footer() {
             </li>
           </ul>
 
-          <div
-            role="img"
-            aria-label="Carte de localisation temporaire du restaurant Le Trophée à Dakar"
-            className="relative mt-5 h-28 w-full overflow-hidden rounded-xl border border-ivoire/15"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(211,155,58,0.12), rgba(211,155,58,0.12)), repeating-linear-gradient(0deg, rgba(255,249,240,0.06) 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, rgba(255,249,240,0.06) 0 1px, transparent 1px 24px)",
-            }}
-          >
-            <MapPinIcon className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-terracotta" />
-            <span className="absolute bottom-1.5 right-2 text-[10px] uppercase tracking-wide text-ivoire/40">
-              Carte à intégrer
-            </span>
+          <div className="mt-5 h-36 w-full overflow-hidden rounded-xl border border-ivoire/15 bg-ivoire/5">
+            <iframe
+              src={getMapEmbedUrl()}
+              title={`Carte de localisation du restaurant Le Trophée, ${SITE.address}`}
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
         </div>
       </Container>

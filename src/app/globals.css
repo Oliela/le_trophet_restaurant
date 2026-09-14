@@ -82,6 +82,11 @@
     background-size: cover;
     background-position: center;
   }
+  .poupee-bg {
+    background-image: url("/images/decoration/9.png");
+    background-size: cover;
+    background-position: center;
+  }
 
   .bogolan-veil {
     position: relative;

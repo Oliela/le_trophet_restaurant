@@ -25,18 +25,18 @@ export const UPCOMING_EVENTS: EventItem[] = [
     tarif: "Entrée libre",
     description:
       "Venez chanter vos chansons préférées et partager un moment convivial autour d'un bon repas.",
-    image: "/images/evenements/evenement-karaoke.jpg",
+    image: "/images/evenements/karaoke.png",
   },
   {
     id: "evt-jeux",
-    slug: "apres-midi-jeux-de-societe",
-    titre: "Après-midi jeux de société",
+    slug: "soiree-jeux-de-societe",
+    titre: "Soirée jeux de société",
     dateLabel: "Tous les dimanches · prochaine session le 30 août 2026",
     heure: "15h00 – 18h00",
     tarif: "Entrée libre",
     description:
-      "Profitez de nos après-midis jeux pour vous détendre entre amis ou faire de nouvelles rencontres.",
-    image: "/images/evenements/evenement-jeux.jpg",
+      "Profitez de nos soirées jeux pour vous détendre entre amis ou faire de nouvelles rencontres.",
+    image: "/images/evenements/secrethitler.jpg",
   },
   {
     id: "evt-match",
@@ -76,9 +76,9 @@ export const UPCOMING_EVENTS: EventItem[] = [
 ];
 
 export const PAST_EVENTS_GALLERY = [
-  { src: "/images/evenements/evenement-karaoke.jpg", alt: "Précédente soirée karaoké" },
-  { src: "/images/evenements/evenement-jeux.jpg", alt: "Précédent après-midi jeux de société" },
-  { src: "/images/evenements/evenement-prive.jpg", alt: "Précédent événement privé" },
-  { src: "/images/evenements/evenement-match.jpg", alt: "Précédente diffusion d'un match" },
-  { src: "/images/evenements/evenement-decouverte.jpg", alt: "Précédente soirée découverte" },
+  { src: "/images/evenements/karaoke.png", alt: "Précédente soirée karaoké" },
+  { src: "/images/evenements/secrethitler.jpg", alt: "Précédent après-midi jeux de société" },
+  { src: "/images/evenements/loup garou.avif", alt: "Précédent événement privé" },
+  // { src: "/images/evenements/evenement-match.jpg", alt: "Précédente diffusion d'un match" },
+  // { src: "/images/evenements/evenement-decouverte.jpg", alt: "Précédente soirée découverte" },
 ];

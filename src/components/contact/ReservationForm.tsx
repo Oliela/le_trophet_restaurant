@@ -17,18 +17,23 @@ type FormState = {
   personnes: string;
   espace: ReservationEspace;
   occasion: ReservationOccasion;
+  autrePrecision: string;
   message: string;
   politiqueAcceptee: boolean;
+
 };
 
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
-const OCCASIONS: { value: ReservationOccasion; label: string }[] = [
-  { value: "repas", label: "Repas" },
-  { value: "anniversaire", label: "Anniversaire" },
-  { value: "groupe", label: "Groupe" },
-  { value: "autre", label: "Autre" },
-];
+const OCCASIONS: {
+  value: ReservationOccasion;
+  label: string;
+}[] = [
+    { value: "table", label: "Réservation de table" },
+    { value: "anniversaire", label: "Anniversaire" },
+    { value: "groupe", label: "Réservation de groupe" },
+    { value: "autre", label: "Autre" },
+  ];
 
 function createInitialState(initial?: Partial<FormState>): FormState {
   return {
@@ -39,7 +44,8 @@ function createInitialState(initial?: Partial<FormState>): FormState {
     heure: "",
     personnes: "2",
     espace: "interieur",
-    occasion: "repas",
+    occasion: "table",
+    autrePrecision: "",
     message: "",
     politiqueAcceptee: false,
     ...initial,
@@ -80,6 +86,14 @@ function validate(values: FormState): FormErrors {
     errors.politiqueAcceptee = "Merci d'accepter la politique de confidentialité.";
   }
 
+  if (
+    values.occasion === "autre" &&
+    !values.autrePrecision.trim()
+  ) {
+    errors.autrePrecision =
+      "Merci de préciser votre demande.";
+  }
+
   return errors;
 }
 
@@ -94,7 +108,7 @@ export function ReservationForm({
   const [values, setValues] = useState<FormState>(() =>
     createInitialState({
       message: initialMessage ?? "",
-      occasion: initialOccasion ?? "repas",
+      occasion: initialOccasion ?? "table",
     })
   );
   const [errors, setErrors] = useState<FormErrors>({});
@@ -126,13 +140,17 @@ export function ReservationForm({
       personnes: Number(values.personnes),
       espace: values.espace,
       occasion: values.occasion,
+      autrePrecision:
+        values.occasion === "autre"
+          ? values.autrePrecision.trim()
+          : undefined,
       message: values.message.trim() || undefined,
       politiqueAcceptee: values.politiqueAcceptee,
     });
 
     if (result.success) {
-      setStatus("success");
-      setValues(createInitialState());
+      window.location.assign(result.whatsappUrl);
+      return;
     } else {
       setStatus("error");
       setServerError(result.error);
@@ -171,8 +189,7 @@ export function ReservationForm({
     ) : null;
 
   const inputClass = (key: keyof FormState) =>
-    `mt-1.5 w-full rounded-xl border bg-ivoire px-4 py-2.5 text-sm text-brun outline-none focus:border-terracotta ${
-      errors[key] ? "border-terracotta" : "border-brun/15"
+    `mt-1.5 w-full rounded-xl border bg-ivoire px-4 py-2.5 text-sm text-brun outline-none focus:border-terracotta ${errors[key] ? "border-terracotta" : "border-brun/15"
     }`;
 
   return (
@@ -266,11 +283,10 @@ export function ReservationForm({
           {(["interieur", "exterieur"] as ReservationEspace[]).map((option) => (
             <label
               key={option}
-              className={`flex-1 cursor-pointer rounded-xl border px-4 py-2.5 text-center text-sm font-semibold transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-terracotta ${
-                values.espace === option
-                  ? "border-terracotta bg-terracotta/10 text-terracotta"
-                  : "border-brun/15 text-grisbrun"
-              }`}
+              className={`flex-1 cursor-pointer rounded-xl border px-4 py-2.5 text-center text-sm font-semibold transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-terracotta ${values.espace === option
+                ? "border-terracotta bg-terracotta/10 text-terracotta"
+                : "border-brun/15 text-grisbrun"
+                }`}
             >
               <input
                 type="radio"
@@ -300,6 +316,26 @@ export function ReservationForm({
           ))}
         </select>
       </label>
+      {values.occasion === "autre" ? (
+        <label className="block text-sm font-medium text-brun">
+          Précisez votre demande
+          <input
+            type="text"
+            value={values.autrePrecision}
+            onChange={(event) =>
+              update("autrePrecision", event.target.value)
+            }
+            aria-invalid={Boolean(errors.autrePrecision)}
+            aria-describedby={
+              errors.autrePrecision
+                ? `${formId}-autrePrecision-error`
+                : undefined
+            }
+            className={inputClass("autrePrecision")}
+          />
+          {fieldError("autrePrecision")}
+        </label>
+      ) : null}
 
       <label className="block text-sm font-medium text-brun">
         Message ou demande particulière{" "}

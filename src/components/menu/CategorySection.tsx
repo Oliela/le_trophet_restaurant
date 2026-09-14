@@ -5,6 +5,7 @@ import { MenuRowDivider } from "@/components/ui/MenuRowDivider";
 import { PriceTag } from "@/components/ui/PriceTag";
 import { Reveal } from "@/components/ui/Reveal";
 import type { MenuCategorySlug, MenuItem } from "@/lib/menu-data";
+import { PoupeeDivider } from "../ui/PoupeeDivider";
 
 const ALCOHOL_GROUP_IMAGES: Record<string, string> = {
   Bières: "/images/boissons/categories/bieres.jpg",
@@ -54,10 +55,14 @@ export function CategorySection({
             className="absolute -inset-4 -z-10 rounded-organic bg-ocre/15"
           />
           {index % 2 === 0 ? (
-            <BogolanDivider
+            <PoupeeDivider
               variant="angle"
               className={`absolute -z-10 ${imageOnRight ? "-right-5 -top-5" : "-left-5 -top-5"}`}
             />
+            
+            // <p className="absolute -z-10 -top-5 text-6xl font-bold text-ocre/15 sm:text-7xl">
+            //   {label}
+            // </p>
           ) : null}
           <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-organic shadow-card">
             <Image

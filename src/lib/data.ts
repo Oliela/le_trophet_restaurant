@@ -45,18 +45,21 @@ export type EventCard = {
 // (la liste complète, avec dates et tarifs, est présentée sur la page /evenements).
 const HOMEPAGE_EVENT_SLUGS = [
   "soiree-karaoke",
-  "apres-midi-jeux-de-societe",
+  "soiree-jeux-de-societe",
   "anniversaire-evenement-prive",
 ];
 
-export const EVENTS: EventCard[] = HOMEPAGE_EVENT_SLUGS.map((slug) => {
-  const event = UPCOMING_EVENTS.find((item) => item.slug === slug)!;
-  return {
-    slug: event.slug,
-    title: event.titre,
-    description: event.description,
-    image: event.image,
-  };
+export const EVENTS: EventCard[] = HOMEPAGE_EVENT_SLUGS.flatMap((slug) => {
+  const event = UPCOMING_EVENTS.find((item) => item.slug === slug);
+
+  return event
+    ? [{
+        slug: event.slug,
+        title: event.titre,
+        description: event.description,
+        image: event.image,
+      }]
+    : [];
 });
 
 export const VALUES = [

@@ -23,7 +23,10 @@ export type GalleryItem = {
   tone?: "clair" | "sombre";
 };
 
-export const GALLERY_FILTERS: { value: "tout" | GalleryCategory; label: string }[] = [
+export const GALLERY_FILTERS: {
+  value: "tout" | GalleryCategory;
+  label: string;
+}[] = [
   { value: "tout", label: "Tout" },
   { value: "plats", label: "Nos plats" },
   { value: "espaces", label: "Nos espaces" },
@@ -34,6 +37,7 @@ export const GALLERY_FILTERS: { value: "tout" | GalleryCategory; label: string }
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  // plats
   {
     id: "g-plat-garba",
     src: "/images/plats/garba.jpeg",
@@ -88,6 +92,96 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     width: 1000,
     height: 900,
   },
+  {
+    id: "g-plat-1",
+    src: "/images/gallerie/plats/plat1.jpeg",
+    alt: "plat1",
+    caption: "Plat 1",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-2",
+    src: "/images/gallerie/plats/plat2.jpeg",
+    alt: "plat2",
+    caption: "Plat 2",
+    category: "plats",
+    width: 1200,
+    height: 1400,
+  },
+  {
+    id: "g-plat-3",
+    src: "/images/gallerie/plats/plat3.jpeg",
+    alt: "plat3",
+    caption: "Plat 3",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-4",
+    src: "/images/gallerie/plats/plat4.jpeg",
+    alt: "plat4",
+    caption: "Plat 4",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-5",
+    src: "/images/gallerie/plats/plat5.jpeg",
+    alt: "plat5",
+    caption: "Plat 5",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-6",
+    src: "/images/gallerie/plats/plat6.jpeg",
+    alt: "plat6",
+    caption: "Plat 6",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-8",
+    src: "/images/gallerie/plats/plat8.jpeg",
+    alt: "plat8",
+    caption: "Plat 8",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-9",
+    src: "/images/gallerie/plats/plat9.jpeg",
+    alt: "plat9",
+    caption: "Plat 9",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-10",
+    src: "/images/gallerie/plats/plat10.jpeg",
+    alt: "plat10",
+    caption: "Plat 10",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
+  {
+    id: "g-plat-11",
+    src: "/images/gallerie/plats/plat11.jpeg",
+    alt: "plat11",
+    caption: "Plat 11",
+    category: "plats",
+    width: 1000,
+    height: 900,
+  },
   //espaces
   {
     id: "g-espace-interieur",
@@ -117,8 +211,26 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     height: 1250,
   },
   {
-    id: "g-espace-terrasse-soir",
-    src: "/images/espaces/espace2.jpeg",
+    id: "g-espace-3",
+    src: "/images/espaces/espace3.jpeg",
+    alt: "Terrasse du restaurant en soirée",
+    caption: "La terrasse en soirée",
+    category: "espaces",
+    width: 1200,
+    height: 900,
+  },
+   {
+    id: "g-espace-5",
+    src: "/images/espaces/espace5.JPG",
+    alt: "Terrasse du restaurant en soirée",
+    caption: "La terrasse en soirée",
+    category: "espaces",
+    width: 1200,
+    height: 900,
+  },
+   {
+    id: "g-espace-6r",
+    src: "/images/espaces/espace6.JPG",
     alt: "Terrasse du restaurant en soirée",
     caption: "La terrasse en soirée",
     category: "espaces",
@@ -153,6 +265,43 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     width: 900,
     height: 1100,
   },
+  {
+    id: "g-boisson-1",
+    src: "/images/boissons/boisson1.jpeg",
+    alt: "Shot Baddies vert ",
+    caption: "Shot Baddies vert ",
+    category: "boissons",
+    width: 900,
+    height: 1100,
+  },
+  {
+    id: "g-boisson-2",
+    src: "/images/boissons/boisson2.jpeg",
+    alt: "boisson2",
+    caption: "Shot Baddies rouge ",
+    category: "boissons",
+    width: 900,
+    height: 1100,
+  },
+   {
+    id: "g-boisson-3",
+    src: "/images/boissons/boisson3.jpeg",
+    alt: "boisson3",
+    caption: "Shot Baddies vert ",
+    category: "boissons",
+    width: 900,
+    height: 1100,
+  },
+   {
+    id: "g-boisson-4",
+    src: "/images/boissons/boisson4.jpeg",
+    alt: "boisson4",
+    caption: "boisson4",
+    category: "boissons",
+    width: 900,
+    height: 1100,
+  },
+
   //evenements
   {
     id: "g-evenement-karaoke",
@@ -266,15 +415,43 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     height: 1100,
     tone: "sombre",
   },
-  {
-    id: "g-decoration-table",
-    src: "/images/decoration/decoration-table.jpg",
-    alt: "Détail décoratif d'une table",
-    caption: "Détail d'une table",
+    {
+    id: "g-decoration-2",
+    src: "/images/decoration/2.jpeg",
+    alt: "jeux africain",
+    caption: "jeux africain",
     category: "decoration",
     width: 1000,
     height: 1000,
   },
+    {
+    id: "g-decoration-2",
+    src: "/images/decoration/1.jpeg",
+    alt: "jeux africain",
+    caption: "jeux africain",
+    category: "decoration",
+    width: 1000,
+    height: 1000,
+  },
+  {
+    id: "g-decoration-7",
+    src: "/images/decoration/7.png",
+    alt: "tableau décoratif ",
+    caption: "tableau décoratif",
+    category: "decoration",
+    width: 1000,
+    height: 1000,
+  },
+   {
+    id: "g-decoration-8",
+    src: "/images/decoration/8.png",
+    alt: "poupee africaine",
+    caption: "poupee africaine",
+    category: "decoration",
+    width: 1000,
+    height: 1000,
+  },
+  
   // equipes
   {
     id: "g-equipe-salle",
