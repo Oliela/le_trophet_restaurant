@@ -10,14 +10,14 @@ export function Hero() {
     <section className="relative isolate overflow-hidden bg-brun pb-20 pt-32 sm:pt-40 lg:pb-28 lg:pt-44">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero/hero.png"
+          src="/images/hero/vis_1205202413255097.jpg"
           alt="Plusieurs plats ivoiriens dressés sur une table au restaurant Le Trophée"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brun via-brun/60 to-brun/[83%]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brun via-brun/60 to-brun" />
       </div>
 
       <div
