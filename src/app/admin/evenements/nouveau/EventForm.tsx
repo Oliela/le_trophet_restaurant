@@ -13,13 +13,13 @@ const initialState: CreateEventState = {};
 const inputClass =
   "w-full rounded-xl border border-brun/20 bg-white px-4 py-3 text-brun outline-none transition focus:border-terracotta";
 
-function SubmitButton() {
+function SubmitButton({ blocked }: { blocked: boolean }) {
   const { pending } = useFormStatus();
 
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={pending || blocked}
       className="btn-primary"
     >
       {pending ? "Enregistrement…" : "Créer l’événement"}
@@ -32,11 +32,12 @@ export function EventForm() {
     createEventAction,
     initialState,
   );
+  const [imageBlockedReason, setImageBlockedReason] = useState("");
   const [scheduleType, setScheduleType] = useState("ONE_DAY");
   const [pollEnabled, setPollEnabled] = useState(false);
 
   return (
-    <form action={formAction} className="mt-8 space-y-8">
+    <form onSubmit={(event) => { if (imageBlockedReason) event.preventDefault(); }} action={formAction} className="mt-8 space-y-8">
       {state.error ? (
         <p
           role="alert"
@@ -124,7 +125,7 @@ export function EventForm() {
           <p className="mb-2 block text-sm font-semibold">
             Image de l’événement — facultative
           </p>
-          <EventImageUpload />
+          <EventImageUpload onBlockedChange={setImageBlockedReason} />
         </div>
       </fieldset>
 
@@ -329,7 +330,8 @@ export function EventForm() {
         </label>
       </fieldset>
 
-      <SubmitButton />
+      {imageBlockedReason ? <p role="status" className="text-sm text-red-700">{imageBlockedReason}</p> : null}
+      <SubmitButton blocked={Boolean(imageBlockedReason)} />
     </form>
   );
 }

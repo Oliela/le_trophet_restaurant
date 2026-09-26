@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
+import { getAdminSession } from "@/lib/auth";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SITE } from "@/lib/data";
@@ -47,11 +48,13 @@ export const metadata: Metadata = {
 
 const restaurantJsonLd = buildRestaurantJsonLd();
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getAdminSession();
+
   return (
     <html lang="fr" className={`${display.variable} ${sans.variable}`}>
       <body>
@@ -66,7 +69,7 @@ export default function RootLayout({
         >
           Aller au contenu principal
         </a>
-        <Header />
+        <Header isAuthenticated={session !== null} />
         <main id="contenu-principal">{children}</main>
         <Footer />
         <WhatsAppButton />

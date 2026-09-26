@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +10,9 @@ import { Container } from "@/components/ui/Container";
 import { CloseIcon, MenuIcon } from "@/components/icons/Icons";
 import { NAV_LINKS, SITE } from "@/lib/data";
 
-export function Header() {
+export function Header({ isAuthenticated }: { isAuthenticated: boolean }) {
+  const accountHref = isAuthenticated ? "/admin" : "/admin/connexion";
+  const accountLabel = isAuthenticated ? "Tableau de bord" : "Me connecter";
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -33,7 +35,7 @@ export function Header() {
     };
   }, [open]);
 
-  const solid = scrolled || open;
+  const solid = scrolled || open || pathname === "/admin" || pathname.startsWith("/admin/");
 
   return (
     <header
@@ -60,7 +62,7 @@ export function Header() {
 
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-9 lg:flex"
+          className="hidden items-center gap-4 lg:flex xl:gap-9"
         >
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
@@ -83,7 +85,10 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
+          <Button href={accountHref} variant="outline" className="whitespace-nowrap bg-ivoire shadow-soft">
+            {accountLabel}
+          </Button>
           <a
             href={SITE.whatsapp}
             target="_blank"
@@ -135,6 +140,9 @@ export function Header() {
               </Link>
             );
           })}
+          <Button href={accountHref} variant="outline" className="mt-4 bg-ivoire">
+            {accountLabel}
+          </Button>
           <div className="mt-4 flex items-center gap-3">
             <Button href="/contact" variant="primary" className="flex-1">
               Réserver une table

@@ -10,7 +10,7 @@ export const SITE = {
   tagline: "Les saveurs de la Côte d’Ivoire au cœur de Dakar.",
   description:
     "Restaurant ivoirien à Dakar : cuisine authentique, ambiance chaleureuse, plats à partir de 2 500 F CFA. Sur place, à emporter, livraison, karaoké et jeux de société.",
-  phone: "+221 77 227 65 80 /+221 33 825 10 84",
+  phone: "+221 77 227 65 80",
   phoneDisplay: "77 227 65 80",
   whatsapp: "https://wa.me/221772276580",
   email: "contact@letrofet.com",

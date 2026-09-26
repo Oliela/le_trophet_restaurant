@@ -10,8 +10,8 @@ export function Hero() {
     <section className="relative isolate overflow-hidden bg-brun pb-20 pt-32 sm:pt-40 lg:pb-28 lg:pt-44">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero/vis_1205202413255097.jpg"
-          alt="Grand plat traditionnel ivoirien servi au restaurant Le Trophée"
+          src="/images/hero/hero.png"
+          alt="Plusieurs plats ivoiriens dressés sur une table au restaurant Le Trophée"
           fill
           priority
           sizes="100vw"

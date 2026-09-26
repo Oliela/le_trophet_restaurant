@@ -19,11 +19,13 @@ export function CategorySection({
   label,
   index,
   items,
+  onPhotoSelect,
 }: {
   slug: MenuCategorySlug;
   label: string;
   index: number;
   items: MenuItem[];
+  onPhotoSelect: (item: MenuItem) => void;
 }) {
   if (items.length === 0) return null;
 
@@ -64,7 +66,13 @@ export function CategorySection({
             //   {label}
             // </p>
           ) : null}
-          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-organic shadow-card">
+          <button
+            type="button"
+            onClick={() => onPhotoSelect(featured)}
+            aria-label={`Agrandir la photo : ${featured.nom}`}
+            aria-haspopup="dialog"
+            className="group relative block aspect-[4/5] w-full cursor-zoom-in overflow-hidden rounded-organic shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta"
+          >
             <Image
               src={featured.image}
               alt={`${featured.nom} — ${label.toLowerCase()} du restaurant Le Trophée`}
@@ -72,7 +80,7 @@ export function CategorySection({
               sizes="(min-width: 1024px) 40vw, 90vw"
               className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
             />
-          </div>
+          </button>
           <PriceTag
             amount={featured.prix}
             size="lg"
@@ -124,7 +132,13 @@ export function CategorySection({
               ) : null}
               <div className="flex items-center gap-5 py-5">
                 {slug !== "boissons-alcoolisees" && slug !== "boissons-chaudes" ? (
-                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full sm:h-20 sm:w-20">
+                  <button
+                    type="button"
+                    onClick={() => onPhotoSelect(item)}
+                    aria-label={`Agrandir la photo : ${item.nom}`}
+                    aria-haspopup="dialog"
+                    className="relative h-16 w-16 shrink-0 cursor-zoom-in overflow-hidden rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta sm:h-20 sm:w-20"
+                  >
                     <Image
                       src={item.image}
                       alt={item.nom}
@@ -132,7 +146,7 @@ export function CategorySection({
                       sizes="80px"
                       className="object-cover"
                     />
-                  </div>
+                  </button>
                 ) : null}
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">

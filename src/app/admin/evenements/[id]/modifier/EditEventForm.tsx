@@ -34,6 +34,7 @@ export function EditEventForm({
 }: {
     event: EditableEvent;
 }) {
+    const [imageBlockedReason, setImageBlockedReason] = useState("");
     const [scheduleType, setScheduleType] = useState(
         event.scheduleType,
     );
@@ -49,7 +50,7 @@ export function EditEventForm({
     >(boundAction, {});
 
     return (
-        <form action={formAction} className="mt-8 space-y-8">
+        <form onSubmit={(event) => { if (imageBlockedReason) event.preventDefault(); }} action={formAction} className="mt-8 space-y-8">
             {state.error ? (
                 <p
                     role="alert"
@@ -137,7 +138,7 @@ export function EditEventForm({
                     <p className="mb-2 block font-semibold">
                         Image de l’événement — facultative
                     </p>
-                    <EventImageUpload initialUrl={event.imageUrl} />
+                    <EventImageUpload initialUrl={event.imageUrl} onBlockedChange={setImageBlockedReason} />
                 </div>
             </fieldset>
 
@@ -354,9 +355,10 @@ export function EditEventForm({
                 </label>
             </fieldset>
 
+            {imageBlockedReason ? <p role="status" className="text-sm text-red-700">{imageBlockedReason}</p> : null}
             <button
                 type="submit"
-                disabled={pending}
+                disabled={pending || Boolean(imageBlockedReason)}
                 className="btn-primary"
             >
                 {pending

@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import { Lightbox } from "@/components/gallery/Lightbox";
+import type { GalleryItem } from "@/lib/gallery-data";
 import { CategorySection } from "@/components/menu/CategorySection";
 import { MenuDollBreak } from "@/components/menu/MenuDollBreak";
 import type { MenuCategorySlug, MenuItem } from "@/lib/menu-data";
@@ -17,6 +19,28 @@ export function MenuBrowser({
   items: MenuItem[];
 }) {
   const [activeSlug, setActiveSlug] = useState<MenuCategorySlug>(categories[0]?.slug);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const photos = useMemo<GalleryItem[]>(() => items.map((item) => ({
+    id: item.id,
+    src: item.image,
+    alt: item.nom,
+    caption: item.nom,
+    category: ["cocktails", "mocktails", "boissons-chaudes", "boissons-alcoolisees", "softs"].includes(item.categorie)
+      ? "boissons" : "plats",
+    width: 1200,
+    height: 1200,
+  })), [items]);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const showPrev = useCallback(() => {
+    setLightboxIndex((current) => current === null ? null : (current - 1 + photos.length) % photos.length);
+  }, [photos.length]);
+  const showNext = useCallback(() => {
+    setLightboxIndex((current) => current === null ? null : (current + 1) % photos.length);
+  }, [photos.length]);
+  const openPhoto = (item: MenuItem) => {
+    const index = photos.findIndex((photo) => photo.id === item.id);
+    if (index !== -1) setLightboxIndex(index);
+  };
   const tabRefs = useRef<Partial<Record<MenuCategorySlug, HTMLAnchorElement>>>({});
 
   useEffect(() => {
@@ -93,6 +117,7 @@ export function MenuBrowser({
         {categories.map((category, index) => (
           <div key={category.slug}>
             <CategorySection
+              onPhotoSelect={openPhoto}
               slug={category.slug}
               label={category.label}
               index={index}
@@ -102,6 +127,15 @@ export function MenuBrowser({
           </div>
         ))}
       </div>
+      {lightboxIndex !== null ? (
+        <Lightbox
+          items={photos}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={showPrev}
+          onNext={showNext}
+        />
+      ) : null}
     </div>
   );
 }

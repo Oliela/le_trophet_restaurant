@@ -783,14 +783,7 @@ export const MENU_ITEMS: MenuItem[] = [
     groupe: "Bières",
   },
 
-  ...[
-    "Bordeaux",
-    "Chardonnay",
-    "Rosé d'Anjou",
-    "Merlot",
-    "Chablis",
-    "Côtes de Provence",
-  ].map(
+  ...["Rouge", "Blanc", "Rosé"].map(
     (nom, index): MenuItem => ({
       id: `vin-${index + 1}`,
       nom,

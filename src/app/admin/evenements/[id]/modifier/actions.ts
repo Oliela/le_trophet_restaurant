@@ -74,7 +74,20 @@ export async function updateEventAction(
 
   if (!result.success) {
     return {
-      error: "Certains champs sont absents ou incorrects.",
+      error: "Enregistrement impossible. Vérifiez : " + [...new Set(result.error.issues.map((issue) => {
+        const instructions: Record<string, string> = {
+          title: "le titre (3 à 120 caractères)",
+          description: "la description (10 à 5 000 caractères)",
+          pricingDetails: "les tarifs (150 caractères maximum)",
+          scheduleType: "le type de programmation",
+          startDate: "la date de début",
+          startTime: "l’heure de début",
+          capacity: "le nombre de places (entier de 1 à 100 000)",
+          imageUrl: "l’adresse de l’image (500 caractères maximum) : choisissez une image avec un nom de fichier plus court",
+          pollQuestion: "la question du sondage (250 caractères maximum)",
+        };
+        return instructions[String(issue.path[0])] ?? "les dates et horaires";
+      }))].join(" ; ") + ".",
     };
   }
 

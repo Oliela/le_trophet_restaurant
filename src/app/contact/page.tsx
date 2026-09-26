@@ -89,7 +89,7 @@ export default async function ContactPage({
                 <ContactCard
                   icon={PhoneIcon}
                   label="Téléphone"
-                  value={SITE.phone}
+                  value={SITE.phoneDisplay}
                   href={`tel:${SITE.phone.replace(/\s/g, "")}`}
                 />
                 <ContactCard
@@ -138,7 +138,8 @@ export default async function ContactPage({
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href={`tel:${SITE.phone.replace(/\s/g, "")}`} variant="primary">
-                  Appeler le restaurant
+                  {/* {SITE.phoneDisplay} */}
+                  Appeler
                 </Button>
                 <Button href={SITE.whatsapp} variant="outline">
                   Écrire sur WhatsApp
